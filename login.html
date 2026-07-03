@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Inicio de Sesión</title>
+
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/campos-dinamicos.css">
+
+</head>
+
+<body>
+
+    <header>
+
+        <div class="contenedor">
+
+            <figure class="logo">
+
+                <img src="img/LogoCenfotec200x200.png" alt="Logo CENFOTEC">
+
+            </figure>
+
+            <nav>
+
+                <ul>
+
+                    <li><a href="Inicio.html">Inicio</a></li>
+
+                    <li><a href="login.html">Iniciar sesión</a></li>
+
+                    <li><a href="Egresados.html"> Perfil de egresados</a></li>
+
+                    <li><a href="Gestion-egresados.html"> Gestion de egresados</a></li>
+
+                    <li><a href="Gestion-carreras.html"> Gestion de carreras</a></li>
+
+                </ul>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+    <main>
+
+        <!-- TITULO -->
+
+        <section class="form-titulo">
+
+            <h1>Inicio de Sesión</h1>
+
+            <p>Ingrese sus credenciales para acceder al sistema</p>
+
+        </section>
+
+        <!-- FORMULARIO -->
+
+        <form action="#" method="post">
+
+            <!-- CORREO -->
+
+            <div class="campo">
+
+                <label for="correo">
+                    Correo electrónico <span class="obligatorio">*</span>
+                </label>
+
+                <input type="email" id="correo" required>
+
+                <div class="ayuda">
+                    Ejemplo: usuario@correo.com
+                </div>
+
+            </div>
+
+            <!-- CONTRASEÑA -->
+
+            <div class="campo">
+
+                <label for="contrasena">
+                    Contraseña <span class="obligatorio">*</span>
+                </label>
+
+                <input type="password" id="contrasena" required>
+
+                <div class="ayuda">
+                    Ingrese su contraseña institucional
+                </div>
+
+            </div>
+
+            <!-- ROL -->
+
+            <div class="campo">
+
+                <label for="rol">
+                    Rol <span class="obligatorio">*</span>
+                </label>
+
+                <select id="rol" required>
+
+                    <option value="">Seleccione un rol</option>
+
+                    <option value="registro">Registro</option>
+
+                    <option value="bienestar">Bienestar Estudiantil</option>
+
+                    <option value="egresado">Egresado</option>
+
+                </select>
+
+                <div class="ayuda">
+                    Seleccione el tipo de usuario
+                </div>
+
+            </div>
+
+            <!-- BOTÓN -->
+
+            <button type="submit">
+                Iniciar Sesión
+            </button>
+
+        </form>
+
+    </main>
+
+        <footer>
+
+        <p>
+            © 2026 Universidad CENFOTEC | Sistema de Gestión de Egresados
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>

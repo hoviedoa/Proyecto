@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gestión de Carreras</title>
+
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/campos-dinamicos.css">
+
+</head>
+
+<body>
+
+    <header>
+
+        <div class="contenedor">
+
+            <figure class="logo">
+
+                <img src="img/LogoCenfotec200x200.png" alt="Logo CENFOTEC">
+
+            </figure>
+
+            <nav>
+
+                <ul>
+
+                    <li><a href="Inicio.html">Inicio</a></li>
+
+                    <li><a href="login.html">Iniciar sesión</a></li>
+
+                    <li><a href="Egresados.html"> Perfil de egresados</a></li>
+
+                    <li><a href="Gestion-egresados.html"> Gestion de egresados</a></li>
+
+                    <li><a href="Gestion-carreras.html"> Gestion de carreras</a></li>
+
+
+                </ul>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+    <main>
+
+        <!-- TÍTULO -->
+
+        <section class="form-titulo">
+
+            <h1>Gestión de Carreras</h1>
+
+            <p>Complete la información para registrar una nueva carrera</p>
+
+        </section>
+
+        <!-- FORMULARIO -->
+
+        <form action="#" method="post">
+
+            <!-- NOMBRE CARRERA -->
+
+            <div class="campo">
+
+                <label for="nombre">
+                    Nombre de la carrera <span class="obligatorio">*</span>
+                </label>
+
+                <input type="text" id="nombre" placeholder="Ej. Ingeniería del Software" required>
+
+                <div class="ayuda">
+                    Ingrese el nombre completo de la carrera
+                </div>
+
+            </div>
+
+            <!-- CÓDIGO -->
+
+            <div class="campo">
+
+                <label for="codigo">
+                    Código <span class="obligatorio">*</span>
+                </label>
+
+                <input type="text" id="codigo" placeholder="Ej. ISW-001" required>
+
+                <div class="ayuda">
+                    Código único de identificación de la carrera
+                </div>
+
+            </div>
+
+            <!-- ESCUELA -->
+
+            <div class="campo">
+
+                <label for="escuela">
+                    Escuela asociada <span class="obligatorio">*</span>
+                </label>
+
+                <select id="escuela" required>
+
+                    <option value="">Seleccione una escuela</option>
+
+                    <option>Tecnologías de la Información</option>
+
+                    <option>Ingeniería del Software</option>
+
+                    <option>Administración de Empresa</option>
+
+                    <option>Ciberseguridad</option>
+
+                    <option>Fundamentos</option>
+
+                    <option>Sistemas Industriales</option>
+
+                    <option>Sistemas de Información</option>
+
+                    <option>Sistemas Inteligentes</option>
+
+                </select>
+
+                <div class="ayuda">
+                    Escuela a la que pertenece la carrera
+                </div>
+
+            </div>
+
+            <!-- DURACIÓN -->
+
+            <div class="campo">
+
+                <label for="duracion">
+                    Duración (años)
+                </label>
+
+                <input type="number" id="duracion" min="1" placeholder="Ej. 4">
+
+                <div class="ayuda">
+                    Tiempo estimado de la carrera
+                </div>
+
+            </div>
+
+            <!-- DESCRIPCIÓN -->
+
+            <div class="campo">
+
+                <label for="descripcion">
+                    Descripción
+                </label>
+
+                <textarea id="descripcion" rows="4" placeholder="Descripción de la carrera"></textarea>
+
+                <div class="ayuda">
+                    Información adicional sobre la carrera
+                </div>
+
+            </div>
+
+            <!-- BOTÓN -->
+
+            <button type="submit">
+                Guardar Carrera
+            </button>
+
+        </form>
+
+    <section class="lista-carreras">
+
+    <h2>Carreras registradas</h2>
+
+    <!-- CARD 1 -->
+    <div class="card-carrera">
+
+        <h3>Desarrollo del Software</h3>
+
+        <p><strong>Código:</strong> ISW-001</p>
+        <p><strong>Escuela:</strong> Ingeniería del Software</p>
+        <p><strong>Duración:</strong> 4 años</p>
+
+        <div class="acciones">
+
+            <button class="editar">Editar</button>
+            <button class="eliminar">Eliminar</button>
+
+        </div>
+
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="card-carrera">
+
+        <h3>Business Analyst</h3>
+
+        <p><strong>Código:</strong> CIB-002</p>
+        <p><strong>Escuela:</strong> Ciberseguridad</p>
+        <p><strong>Duración:</strong> 2 años</p>
+
+        <div class="acciones">
+
+            <button class="editar">Editar</button>
+            <button class="eliminar">Eliminar</button>
+
+        </div>
+
+    </div>
+
+     </section>
+
+    </main>
+
+        <footer>
+
+        <p>
+            © 2026 Universidad CENFOTEC | Sistema de Gestión de Egresados
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>

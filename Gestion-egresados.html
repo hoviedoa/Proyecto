@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Registro de Egresados</title>
+
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/campos-dinamicos.css">
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="contenedor">
+
+        <figure class="logo">
+            <img src="img/LogoCenfotec200x200.png" alt="Logo CENFOTEC">
+        </figure>
+
+        <nav>
+            <ul>
+                <li><a href="Inicio.html">Inicio</a></li>
+                <li><a href="login.html">Iniciar sesión</a></li>
+                <li><a href="Egresados.html">Perfil de egresados</a></li>
+                <li><a href="Gestion-egresados.html">Gestión de egresados</a></li>
+                <li><a href="Gestion-carreras.html">Gestión de carreras</a></li>
+            </ul>
+        </nav>
+
+    </div>
+
+</header>
+
+<main>
+
+    <!-- TITULO -->
+    <section class="form-titulo">
+
+        <h1>Registro de Egresados</h1>
+
+        <p>Complete la información para registrar un nuevo egresado</p>
+
+    </section>
+
+    <!-- FORMULARIO -->
+    <form action="#" method="post">
+
+        <!-- IDENTIFICACIÓN -->
+        <div class="campo">
+
+            <label for="identificacion">
+                Identificación <span class="obligatorio">*</span>
+            </label>
+
+            <input type="text" id="identificacion" required>
+
+            <div class="ayuda">
+                Número de cédula o identificación del egresado
+            </div>
+
+        </div>
+
+        <!-- NOMBRE -->
+        <div class="campo">
+
+            <label for="nombre">
+                Nombre completo <span class="obligatorio">*</span>
+            </label>
+
+            <input type="text" id="nombre" required>
+
+            <div class="ayuda">
+                Nombre y apellidos del egresado
+            </div>
+
+        </div>
+
+        <!-- CORREO -->
+        <div class="campo">
+
+            <label for="correo">
+                Correo electrónico <span class="obligatorio">*</span>
+            </label>
+
+            <input type="email" id="correo" required>
+
+            <div class="ayuda">
+                Ejemplo: usuario@correo.com
+            </div>
+
+        </div>
+
+        <!-- TELÉFONO -->
+        <div class="campo">
+
+            <label for="telefono">
+                Teléfono
+            </label>
+
+            <input type="tel" id="telefono" placeholder="8888-8888">
+
+            <div class="ayuda">
+                Número de contacto del egresado
+            </div>
+
+        </div>
+
+        <!-- CARRERA -->
+        <div class="campo">
+
+            <label for="carrera">
+                Carrera asociada <span class="obligatorio">*</span>
+            </label>
+
+            <select id="carrera" required>
+
+                <option value="">Seleccione una carrera</option>
+
+                <option>Ingeniería del Software</option>
+                <option>Ciberseguridad</option>
+                <option>Sistemas de Información</option>
+                <option>Desarrollo de Software</option>
+                <option>Desarrollo y Diseño Web</option>
+                <option>Diseño Gráfico y Experiencia de Usuario</option>
+                <option>Automatización de Pruebas de Software</option>
+                <option>Data Analyst</option>
+                <option>Data Engineer</option>
+
+            </select>
+
+            <div class="ayuda">
+                Seleccione la carrera del egresado
+            </div>
+
+        </div>
+
+        <!-- LUGARES DE TRABAJO (CORREGIDO) -->
+        <div class="campo">
+
+            <label for="empresa">
+                Lugares de trabajo
+            </label>
+
+            <textarea id="empresa" placeholder="Ej: Empresa A, Empresa B, Empresa C"></textarea>
+
+            <div class="ayuda">
+                Puede registrar múltiples lugares de trabajo
+            </div>
+
+        </div>
+
+        <!-- FECHA -->
+        <div class="campo">
+
+            <label for="fecha">
+                Fecha de registro
+            </label>
+
+            <input type="date" id="fecha" required>
+
+            <div class="ayuda">
+                Fecha en que se registra el egresado
+            </div>
+
+        </div>
+
+        <!-- BOTÓN -->
+        <button type="submit">
+            Guardar Egresado
+        </button>
+
+    </form>
+
+    </main>
+    <footer>
+
+        <p>
+            © 2026 Universidad CENFOTEC | Sistema de Gestión de Egresados
+        </p>
+
+    </footer>
+
+</body>
+</html>
