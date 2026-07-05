@@ -1,5 +1,3 @@
-
-
 *{
     margin: 0;
     padding: 0;
@@ -13,12 +11,8 @@ body{
     line-height: 1.6;
 }
 
-/* =========================
-   HEADER
-========================= */
-
 header{
-    background-color: #003B70;
+    background-color: #006AEA;
     padding: 15px 30px;
 }
 
@@ -31,10 +25,10 @@ header{
 }
 
 .logo img{
-    width: 160px;
+    height: 2.5cm;
+    width: auto;
+    display: block;
 }
-
-/* NAV */
 
 nav ul{
     list-style: none;
@@ -49,18 +43,14 @@ nav a{
 }
 
 nav a:hover{
-    color: #0f84eb;
+    color: #003B70;
 }
-
-
 
 main{
     max-width: 1100px;
     margin: 40px auto;
     padding: 0 20px;
 }
-
-
 
 .boton{
     display: inline-block;
@@ -76,8 +66,6 @@ main{
     background-color: #003B70;
 }
 
-
-
 .contenedor-tarjetas{
     display: flex;
     gap: 20px;
@@ -85,7 +73,7 @@ main{
 }
 
 .tarjeta{
-    background: white;
+    background-color: white;
     padding: 20px;
     border-radius: 8px;
     width: 100%;
@@ -97,11 +85,9 @@ main{
     color: #003B70;
 }
 
-
-
 .bienvenida{
     text-align: center;
-    background: white;
+    background-color: white;
     padding: 50px 20px;
     border-radius: 8px;
     box-shadow: 0 0 8px rgba(0,0,0,0.1);
@@ -116,12 +102,13 @@ main{
     margin-bottom: 20px;
 }
 
-
-
 footer{
     background-color: #001120;
     color: white;
     text-align: center;
-    padding: 20px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    padding-left: 20px;
+    padding-right: 20px;
     margin-top: 50px;
 }

@@ -20,11 +20,17 @@
 
         <div class="contenedor">
 
-            <figure class="logo">
+            <a href="Inicio.html">
 
-                <img src="img/LogoCenfotec200x200.png" alt="Logo CENFOTEC">
+                <figure class="logo">
 
-            </figure>
+                    <img
+                        src="img/cenfotec.png"
+                        alt="Logo de la Universidad CENFOTEC">
+
+                </figure>
+
+            </a>
 
             <nav>
 
@@ -34,11 +40,11 @@
 
                     <li><a href="login.html">Iniciar sesión</a></li>
 
-                    <li><a href="Egresados.html"> Perfil de egresados</a></li>
+                    <li><a href="Egresados.html">Perfil de egresados</a></li>
 
-                    <li><a href="Gestion-egresados.html"> Gestion de egresados</a></li>
+                    <li><a href="Gestion-egresados.html">Gestion de egresados</a></li>
 
-                    <li><a href="Gestion-carreras.html"> Gestion de carreras</a></li>
+                    <li><a href="Gestion-carreras.html">Gestion de carreras</a></li>
 
                 </ul>
 
@@ -50,21 +56,17 @@
 
     <main>
 
-        <!-- TITULO -->
-
         <section class="form-titulo">
 
             <h1>Inicio de Sesión</h1>
 
-            <p>Ingrese sus credenciales para acceder al sistema</p>
+            <p>
+                Ingrese sus credenciales para acceder al sistema
+            </p>
 
         </section>
 
-        <!-- FORMULARIO -->
-
         <form action="#" method="post">
-
-            <!-- CORREO -->
 
             <div class="campo">
 
@@ -72,15 +74,22 @@
                     Correo electrónico <span class="obligatorio">*</span>
                 </label>
 
-                <input type="email" id="correo" required>
+                <input
+                    type="email"
+                    id="correo"
+                    name="correo"
+                    aria-describedby="ayuda-correo"
+                    required>
 
-                <div class="ayuda">
+                <div
+                    id="ayuda-correo"
+                    class="ayuda">
+
                     Ejemplo: usuario@correo.com
+
                 </div>
 
             </div>
-
-            <!-- CONTRASEÑA -->
 
             <div class="campo">
 
@@ -88,15 +97,22 @@
                     Contraseña <span class="obligatorio">*</span>
                 </label>
 
-                <input type="password" id="contrasena" required>
+                <input
+                    type="password"
+                    id="contrasena"
+                    name="contrasena"
+                    aria-describedby="ayuda-contrasena"
+                    required>
 
-                <div class="ayuda">
+                <div
+                    id="ayuda-contrasena"
+                    class="ayuda">
+
                     Ingrese su contraseña institucional
+
                 </div>
 
             </div>
-
-            <!-- ROL -->
 
             <div class="campo">
 
@@ -104,7 +120,11 @@
                     Rol <span class="obligatorio">*</span>
                 </label>
 
-                <select id="rol" required>
+                <select
+                    id="rol"
+                    name="rol"
+                    aria-describedby="ayuda-rol"
+                    required>
 
                     <option value="">Seleccione un rol</option>
 
@@ -116,13 +136,15 @@
 
                 </select>
 
-                <div class="ayuda">
+                <div
+                    id="ayuda-rol"
+                    class="ayuda">
+
                     Seleccione el tipo de usuario
+
                 </div>
 
             </div>
-
-            <!-- BOTÓN -->
 
             <button type="submit">
                 Iniciar Sesión
@@ -132,14 +154,13 @@
 
     </main>
 
-        <footer>
+    <footer>
 
         <p>
             © 2026 Universidad CENFOTEC | Sistema de Gestión de Egresados
         </p>
 
     </footer>
-
 
 </body>
 

@@ -20,11 +20,17 @@
 
         <div class="contenedor">
 
-            <figure class="logo">
+            <a href="Inicio.html">
 
-                <img src="img/LogoCenfotec200x200.png" alt="Logo CENFOTEC">
+                <figure class="logo">
 
-            </figure>
+                    <img
+                        src="img/cenfotec.png"
+                        alt="Logo de la Universidad CENFOTEC">
+
+                </figure>
+
+            </a>
 
             <nav>
 
@@ -34,12 +40,11 @@
 
                     <li><a href="login.html">Iniciar sesión</a></li>
 
-                    <li><a href="Egresados.html"> Perfil de egresados</a></li>
+                    <li><a href="Egresados.html">Perfil de egresados</a></li>
 
-                    <li><a href="Gestion-egresados.html"> Gestion de egresados</a></li>
+                    <li><a href="Gestion-egresados.html">Gestión de egresados</a></li>
 
-                    <li><a href="Gestion-carreras.html"> Gestion de carreras</a></li>
-
+                    <li><a href="Gestion-carreras.html">Gestión de carreras</a></li>
 
                 </ul>
 
@@ -51,21 +56,17 @@
 
     <main>
 
-        <!-- TÍTULO -->
-
         <section class="form-titulo">
 
             <h1>Gestión de Carreras</h1>
 
-            <p>Complete la información para registrar una nueva carrera</p>
+            <p>
+                Complete la información para registrar una nueva carrera
+            </p>
 
         </section>
 
-        <!-- FORMULARIO -->
-
         <form action="#" method="post">
-
-            <!-- NOMBRE CARRERA -->
 
             <div class="campo">
 
@@ -73,15 +74,23 @@
                     Nombre de la carrera <span class="obligatorio">*</span>
                 </label>
 
-                <input type="text" id="nombre" placeholder="Ej. Ingeniería del Software" required>
+                <input
+                    type="text"
+                    id="nombre"
+                    name="nombre"
+                    placeholder="Ej. Ingeniería del Software"
+                    aria-describedby="ayuda-nombre"
+                    required>
 
-                <div class="ayuda">
+                <div
+                    id="ayuda-nombre"
+                    class="ayuda">
+
                     Ingrese el nombre completo de la carrera
+
                 </div>
 
             </div>
-
-            <!-- CÓDIGO -->
 
             <div class="campo">
 
@@ -89,15 +98,23 @@
                     Código <span class="obligatorio">*</span>
                 </label>
 
-                <input type="text" id="codigo" placeholder="Ej. ISW-001" required>
+                <input
+                    type="text"
+                    id="codigo"
+                    name="codigo"
+                    placeholder="Ej. ISW-001"
+                    aria-describedby="ayuda-codigo"
+                    required>
 
-                <div class="ayuda">
+                <div
+                    id="ayuda-codigo"
+                    class="ayuda">
+
                     Código único de identificación de la carrera
+
                 </div>
 
             </div>
-
-            <!-- ESCUELA -->
 
             <div class="campo">
 
@@ -105,35 +122,41 @@
                     Escuela asociada <span class="obligatorio">*</span>
                 </label>
 
-                <select id="escuela" required>
+                <select
+                    id="escuela"
+                    name="escuela"
+                    aria-describedby="ayuda-escuela"
+                    required>
 
                     <option value="">Seleccione una escuela</option>
 
-                    <option>Tecnologías de la Información</option>
+                    <option value="Tecnologías de la Información">Tecnologías de la Información</option>
 
-                    <option>Ingeniería del Software</option>
+                    <option value="Ingeniería del Software">Ingeniería del Software</option>
 
-                    <option>Administración de Empresa</option>
+                    <option value="Administración de Empresa">Administración de Empresa</option>
 
-                    <option>Ciberseguridad</option>
+                    <option value="Ciberseguridad">Ciberseguridad</option>
 
-                    <option>Fundamentos</option>
+                    <option value="Fundamentos">Fundamentos</option>
 
-                    <option>Sistemas Industriales</option>
+                    <option value="Sistemas Industriales">Sistemas Industriales</option>
 
-                    <option>Sistemas de Información</option>
+                    <option value="Sistemas de Información">Sistemas de Información</option>
 
-                    <option>Sistemas Inteligentes</option>
+                    <option value="Sistemas Inteligentes">Sistemas Inteligentes</option>
 
                 </select>
 
-                <div class="ayuda">
+                <div
+                    id="ayuda-escuela"
+                    class="ayuda">
+
                     Escuela a la que pertenece la carrera
+
                 </div>
 
             </div>
-
-            <!-- DURACIÓN -->
 
             <div class="campo">
 
@@ -141,15 +164,23 @@
                     Duración (años)
                 </label>
 
-                <input type="number" id="duracion" min="1" placeholder="Ej. 4">
+                <input
+                    type="number"
+                    id="duracion"
+                    name="duracion"
+                    min="1"
+                    placeholder="Ej. 4"
+                    aria-describedby="ayuda-duracion">
 
-                <div class="ayuda">
+                <div
+                    id="ayuda-duracion"
+                    class="ayuda">
+
                     Tiempo estimado de la carrera
+
                 </div>
 
             </div>
-
-            <!-- DESCRIPCIÓN -->
 
             <div class="campo">
 
@@ -157,15 +188,22 @@
                     Descripción
                 </label>
 
-                <textarea id="descripcion" rows="4" placeholder="Descripción de la carrera"></textarea>
+                <textarea
+                    id="descripcion"
+                    name="descripcion"
+                    rows="4"
+                    placeholder="Descripción de la carrera"
+                    aria-describedby="ayuda-descripcion"></textarea>
 
-                <div class="ayuda">
+                <div
+                    id="ayuda-descripcion"
+                    class="ayuda">
+
                     Información adicional sobre la carrera
+
                 </div>
 
             </div>
-
-            <!-- BOTÓN -->
 
             <button type="submit">
                 Guardar Carrera
@@ -173,51 +211,63 @@
 
         </form>
 
-    <section class="lista-carreras">
+        <section class="lista-carreras">
 
-    <h2>Carreras registradas</h2>
+            <h2>Carreras registradas</h2>
 
-    <!-- CARD 1 -->
-    <div class="card-carrera">
+            <article class="card-carrera">
 
-        <h3>Desarrollo del Software</h3>
+                <h3>Desarrollo del Software</h3>
 
-        <p><strong>Código:</strong> ISW-001</p>
-        <p><strong>Escuela:</strong> Ingeniería del Software</p>
-        <p><strong>Duración:</strong> 4 años</p>
+                <p><strong>Código:</strong> ISW-001</p>
 
-        <div class="acciones">
+                <p><strong>Escuela:</strong> Ingeniería del Software</p>
 
-            <button class="editar">Editar</button>
-            <button class="eliminar">Eliminar</button>
+                <p><strong>Duración:</strong> 4 años</p>
 
-        </div>
+                <div class="acciones">
 
-    </div>
+                    <button type="button" class="editar">
+                        Editar
+                    </button>
 
-    <!-- CARD 2 -->
-    <div class="card-carrera">
+                    <button type="button" class="eliminar">
+                        Eliminar
+                    </button>
 
-        <h3>Business Analyst</h3>
+                </div>
 
-        <p><strong>Código:</strong> CIB-002</p>
-        <p><strong>Escuela:</strong> Ciberseguridad</p>
-        <p><strong>Duración:</strong> 2 años</p>
+            </article>
 
-        <div class="acciones">
+            <article class="card-carrera">
 
-            <button class="editar">Editar</button>
-            <button class="eliminar">Eliminar</button>
+                <h3>Business Analyst</h3>
 
-        </div>
+                <p><strong>Código:</strong> CIB-002</p>
 
-    </div>
+                <p><strong>Escuela:</strong> Ciberseguridad</p>
 
-     </section>
+                <p><strong>Duración:</strong> 2 años</p>
+
+                <div class="acciones">
+
+                    <button type="button" class="editar">
+                        Editar
+                    </button>
+
+                    <button type="button" class="eliminar">
+                        Eliminar
+                    </button>
+
+                </div>
+
+            </article>
+
+        </section>
 
     </main>
 
-        <footer>
+    <footer>
 
         <p>
             © 2026 Universidad CENFOTEC | Sistema de Gestión de Egresados
@@ -225,7 +275,7 @@
 
     </footer>
 
-
 </body>
 
 </html>
+

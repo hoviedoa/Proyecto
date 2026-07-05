@@ -15,169 +15,247 @@
 
 <body>
 
-<header>
+    <header>
 
-    <div class="contenedor">
+        <div class="contenedor">
 
-        <figure class="logo">
-            <img src="img/LogoCenfotec200x200.png" alt="Logo CENFOTEC">
-        </figure>
+            <a href="Inicio.html">
 
-        <nav>
-            <ul>
-                <li><a href="Inicio.html">Inicio</a></li>
-                <li><a href="login.html">Iniciar sesión</a></li>
-                <li><a href="Egresados.html">Perfil de egresados</a></li>
-                <li><a href="Gestion-egresados.html">Gestión de egresados</a></li>
-                <li><a href="Gestion-carreras.html">Gestión de carreras</a></li>
-            </ul>
-        </nav>
+                <figure class="logo">
 
-    </div>
+                    <img
+                        src="img/cenfotec.png"
+                        alt="Logo de la Universidad CENFOTEC">
 
-</header>
+                </figure>
 
-<main>
+            </a>
 
-    <!-- TITULO -->
-    <section class="form-titulo">
+            <nav>
 
-        <h1>Registro de Egresados</h1>
+                <ul>
 
-        <p>Complete la información para registrar un nuevo egresado</p>
+                    <li><a href="Inicio.html">Inicio</a></li>
 
-    </section>
+                    <li><a href="login.html">Iniciar sesión</a></li>
 
-    <!-- FORMULARIO -->
-    <form action="#" method="post">
+                    <li><a href="Egresados.html">Perfil de egresados</a></li>
 
-        <!-- IDENTIFICACIÓN -->
-        <div class="campo">
+                    <li><a href="Gestion-egresados.html">Gestión de egresados</a></li>
 
-            <label for="identificacion">
-                Identificación <span class="obligatorio">*</span>
-            </label>
+                    <li><a href="Gestion-carreras.html">Gestión de carreras</a></li>
 
-            <input type="text" id="identificacion" required>
+                </ul>
 
-            <div class="ayuda">
-                Número de cédula o identificación del egresado
-            </div>
+            </nav>
 
         </div>
 
-        <!-- NOMBRE -->
-        <div class="campo">
+    </header>
 
-            <label for="nombre">
-                Nombre completo <span class="obligatorio">*</span>
-            </label>
+    <main>
 
-            <input type="text" id="nombre" required>
+        <section class="form-titulo">
 
-            <div class="ayuda">
-                Nombre y apellidos del egresado
+            <h1>Registro de Egresados</h1>
+
+            <p>
+                Complete la información para registrar un nuevo egresado
+            </p>
+
+        </section>
+
+        <form action="#" method="post">
+
+            <div class="campo">
+
+                <label for="identificacion">
+                    Identificación <span class="obligatorio">*</span>
+                </label>
+
+                <input
+                    type="text"
+                    id="identificacion"
+                    name="identificacion"
+                    aria-describedby="ayuda-identificacion"
+                    required>
+
+                <div
+                    id="ayuda-identificacion"
+                    class="ayuda">
+
+                    Número de cédula o identificación del egresado
+
+                </div>
+
             </div>
 
-        </div>
+            <div class="campo">
 
-        <!-- CORREO -->
-        <div class="campo">
+                <label for="nombre">
+                    Nombre completo <span class="obligatorio">*</span>
+                </label>
 
-            <label for="correo">
-                Correo electrónico <span class="obligatorio">*</span>
-            </label>
+                <input
+                    type="text"
+                    id="nombre"
+                    name="nombre"
+                    aria-describedby="ayuda-nombre"
+                    required>
 
-            <input type="email" id="correo" required>
+                <div
+                    id="ayuda-nombre"
+                    class="ayuda">
 
-            <div class="ayuda">
-                Ejemplo: usuario@correo.com
+                    Nombre y apellidos del egresado
+
+                </div>
+
             </div>
 
-        </div>
+            <div class="campo">
 
-        <!-- TELÉFONO -->
-        <div class="campo">
+                <label for="correo">
+                    Correo electrónico <span class="obligatorio">*</span>
+                </label>
 
-            <label for="telefono">
-                Teléfono
-            </label>
+                <input
+                    type="email"
+                    id="correo"
+                    name="correo"
+                    aria-describedby="ayuda-correo"
+                    required>
 
-            <input type="tel" id="telefono" placeholder="8888-8888">
+                <div
+                    id="ayuda-correo"
+                    class="ayuda">
 
-            <div class="ayuda">
-                Número de contacto del egresado
+                    Ejemplo: usuario@correo.com
+
+                </div>
+
             </div>
 
-        </div>
+            <div class="campo">
 
-        <!-- CARRERA -->
-        <div class="campo">
+                <label for="telefono">
+                    Teléfono
+                </label>
 
-            <label for="carrera">
-                Carrera asociada <span class="obligatorio">*</span>
-            </label>
+                <input
+                    type="tel"
+                    id="telefono"
+                    name="telefono"
+                    placeholder="8888-8888"
+                    aria-describedby="ayuda-telefono">
 
-            <select id="carrera" required>
+                <div
+                    id="ayuda-telefono"
+                    class="ayuda">
 
-                <option value="">Seleccione una carrera</option>
+                    Número de contacto del egresado
 
-                <option>Ingeniería del Software</option>
-                <option>Ciberseguridad</option>
-                <option>Sistemas de Información</option>
-                <option>Desarrollo de Software</option>
-                <option>Desarrollo y Diseño Web</option>
-                <option>Diseño Gráfico y Experiencia de Usuario</option>
-                <option>Automatización de Pruebas de Software</option>
-                <option>Data Analyst</option>
-                <option>Data Engineer</option>
+                </div>
 
-            </select>
-
-            <div class="ayuda">
-                Seleccione la carrera del egresado
             </div>
 
-        </div>
+            <div class="campo">
 
-        <!-- LUGARES DE TRABAJO (CORREGIDO) -->
-        <div class="campo">
+                <label for="carrera">
+                    Carrera asociada <span class="obligatorio">*</span>
+                </label>
 
-            <label for="empresa">
-                Lugares de trabajo
-            </label>
+                <select
+                    id="carrera"
+                    name="carrera"
+                    aria-describedby="ayuda-carrera"
+                    required>
 
-            <textarea id="empresa" placeholder="Ej: Empresa A, Empresa B, Empresa C"></textarea>
+                    <option value="">Seleccione una carrera</option>
 
-            <div class="ayuda">
-                Puede registrar múltiples lugares de trabajo
+                    <option value="Ingeniería del Software">Ingeniería del Software</option>
+
+                    <option value="Ciberseguridad">Ciberseguridad</option>
+
+                    <option value="Sistemas de Información">Sistemas de Información</option>
+
+                    <option value="Desarrollo de Software">Desarrollo de Software</option>
+
+                    <option value="Desarrollo y Diseño Web">Desarrollo y Diseño Web</option>
+
+                    <option value="Diseño Gráfico y Experiencia de Usuario">Diseño Gráfico y Experiencia de Usuario</option>
+
+                    <option value="Automatización de Pruebas de Software">Automatización de Pruebas de Software</option>
+
+                    <option value="Data Analyst">Data Analyst</option>
+
+                    <option value="Data Engineer">Data Engineer</option>
+
+                </select>
+
+                <div
+                    id="ayuda-carrera"
+                    class="ayuda">
+
+                    Seleccione la carrera del egresado
+
+                </div>
+
             </div>
 
-        </div>
+            <div class="campo">
 
-        <!-- FECHA -->
-        <div class="campo">
+                <label for="empresa">
+                    Lugares de trabajo
+                </label>
 
-            <label for="fecha">
-                Fecha de registro
-            </label>
+                <textarea
+                    id="empresa"
+                    name="empresa"
+                    aria-describedby="ayuda-empresa"
+                    placeholder="Ej: Empresa A, Empresa B, Empresa C"></textarea>
 
-            <input type="date" id="fecha" required>
+                <div
+                    id="ayuda-empresa"
+                    class="ayuda">
 
-            <div class="ayuda">
-                Fecha en que se registra el egresado
+                    Puede registrar múltiples lugares de trabajo
+
+                </div>
+
             </div>
 
-        </div>
+            <div class="campo">
 
-        <!-- BOTÓN -->
-        <button type="submit">
-            Guardar Egresado
-        </button>
+                <label for="fecha">
+                    Fecha de registro
+                </label>
 
-    </form>
+                <input
+                    type="date"
+                    id="fecha"
+                    name="fecha"
+                    aria-describedby="ayuda-fecha"
+                    required>
+
+                <div
+                    id="ayuda-fecha"
+                    class="ayuda">
+
+                    Fecha en que se registra el egresado
+
+                </div>
+
+            </div>
+
+            <button type="submit">
+                Guardar Egresado
+            </button>
+
+        </form>
 
     </main>
+
     <footer>
 
         <p>
@@ -187,4 +265,5 @@
     </footer>
 
 </body>
+
 </html>

@@ -1,21 +1,13 @@
-/* =========================
-   FORMULARIOS
-========================= */
-
 form{
-    background: white;
+    background-color: white;
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 0 8px rgba(0,0,0,0.1);
 }
 
-/* BLOQUE DE CAMPO */
-
 .campo{
     margin-bottom: 20px;
 }
-
-/* LABEL */
 
 label{
     display: block;
@@ -23,16 +15,26 @@ label{
     margin-bottom: 6px;
 }
 
-/* INPUTS */
-
-input, select, textarea{
+input,
+select,
+textarea{
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    font-family: inherit;
 }
 
-/* TEXTO AYUDA */
+input:focus,
+select:focus,
+textarea:focus{
+    outline: 2px solid #005DAA;
+    outline-offset: 2px;
+}
+
+textarea{
+    resize: vertical;
+}
 
 .ayuda{
     font-size: 12px;
@@ -40,31 +42,26 @@ input, select, textarea{
     margin-top: 5px;
 }
 
-/* OBLIGATORIO */
-
 .obligatorio{
     color: red;
     margin-left: 5px;
 }
 
-/* BOTÓN SUBMIT */
-
 button{
     width: 100%;
     padding: 12px;
-    background: #005DAA;
+    background-color: #005DAA;
     color: white;
     border: none;
     border-radius: 5px;
+    font-family: inherit;
     font-weight: bold;
     cursor: pointer;
 }
 
 button:hover{
-    background: #003B70;
+    background-color: #003B70;
 }
-
-/* TÍTULO FORMULARIO */
 
 .form-titulo{
     text-align: center;
@@ -75,37 +72,37 @@ button:hover{
     color: #003B70;
 }
 
-.lista-carreras {
+.lista-carreras{
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
-.card-carrera {
+.card-carrera{
     border: 1px solid #ccc;
     padding: 15px;
     border-radius: 10px;
-    background: #fff;
+    background-color: #fff;
 }
 
-.card-carrera h3 {
+.card-carrera h3{
     margin-bottom: 10px;
 }
 
-.acciones {
+.acciones{
     margin-top: 10px;
     display: flex;
     gap: 10px;
 }
 
-.editar {
+.editar{
     background-color: #005DAA;
     color: white;
     border: none;
     padding: 5px 10px;
 }
 
-.eliminar {
+.eliminar{
     background-color: #005DAA;
     color: white;
     border: none;
