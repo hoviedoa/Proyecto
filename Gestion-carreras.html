@@ -66,12 +66,16 @@
 
         </section>
 
-        <form action="#" method="post">
+        <form
+            id="formulario-carrera"
+            action="#"
+            method="post">
 
             <div class="campo">
 
                 <label for="nombre">
-                    Nombre de la carrera <span class="obligatorio">*</span>
+                    Nombre de la carrera
+                    <span class="obligatorio">*</span>
                 </label>
 
                 <input
@@ -95,7 +99,8 @@
             <div class="campo">
 
                 <label for="codigo">
-                    Código <span class="obligatorio">*</span>
+                    Código
+                    <span class="obligatorio">*</span>
                 </label>
 
                 <input
@@ -119,7 +124,8 @@
             <div class="campo">
 
                 <label for="escuela">
-                    Escuela asociada <span class="obligatorio">*</span>
+                    Escuela asociada
+                    <span class="obligatorio">*</span>
                 </label>
 
                 <select
@@ -130,21 +136,37 @@
 
                     <option value="">Seleccione una escuela</option>
 
-                    <option value="Tecnologías de la Información">Tecnologías de la Información</option>
+                    <option value="Tecnologías de la Información">
+                        Tecnologías de la Información
+                    </option>
 
-                    <option value="Ingeniería del Software">Ingeniería del Software</option>
+                    <option value="Ingeniería del Software">
+                        Ingeniería del Software
+                    </option>
 
-                    <option value="Administración de Empresa">Administración de Empresa</option>
+                    <option value="Administración de Empresa">
+                        Administración de Empresa
+                    </option>
 
-                    <option value="Ciberseguridad">Ciberseguridad</option>
+                    <option value="Ciberseguridad">
+                        Ciberseguridad
+                    </option>
 
-                    <option value="Fundamentos">Fundamentos</option>
+                    <option value="Fundamentos">
+                        Fundamentos
+                    </option>
 
-                    <option value="Sistemas Industriales">Sistemas Industriales</option>
+                    <option value="Sistemas Industriales">
+                        Sistemas Industriales
+                    </option>
 
-                    <option value="Sistemas de Información">Sistemas de Información</option>
+                    <option value="Sistemas de Información">
+                        Sistemas de Información
+                    </option>
 
-                    <option value="Sistemas Inteligentes">Sistemas Inteligentes</option>
+                    <option value="Sistemas Inteligentes">
+                        Sistemas Inteligentes
+                    </option>
 
                 </select>
 
@@ -205,63 +227,21 @@
 
             </div>
 
-            <button type="submit">
+            <button
+                type="submit"
+                id="guardar-carrera">
+
                 Guardar Carrera
+
             </button>
 
         </form>
 
-        <section class="lista-carreras">
+        <section
+            class="lista-carreras"
+            id="lista-carreras">
 
             <h2>Carreras registradas</h2>
-
-            <article class="card-carrera">
-
-                <h3>Desarrollo del Software</h3>
-
-                <p><strong>Código:</strong> ISW-001</p>
-
-                <p><strong>Escuela:</strong> Ingeniería del Software</p>
-
-                <p><strong>Duración:</strong> 4 años</p>
-
-                <div class="acciones">
-
-                    <button type="button" class="editar">
-                        Editar
-                    </button>
-
-                    <button type="button" class="eliminar">
-                        Eliminar
-                    </button>
-
-                </div>
-
-            </article>
-
-            <article class="card-carrera">
-
-                <h3>Business Analyst</h3>
-
-                <p><strong>Código:</strong> CIB-002</p>
-
-                <p><strong>Escuela:</strong> Ciberseguridad</p>
-
-                <p><strong>Duración:</strong> 2 años</p>
-
-                <div class="acciones">
-
-                    <button type="button" class="editar">
-                        Editar
-                    </button>
-
-                    <button type="button" class="eliminar">
-                        Eliminar
-                    </button>
-
-                </div>
-
-            </article>
 
         </section>
 
@@ -274,6 +254,10 @@
         </p>
 
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="js/Gestion-carreras.js"></script>
 
 </body>
 
