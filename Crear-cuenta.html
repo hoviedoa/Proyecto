@@ -5,10 +5,9 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Inicio de Sesión</title>
+    <title>Crear Cuenta</title>
 
     <link rel="stylesheet" href="css/estilos.css">
     <link rel="stylesheet" href="css/campos-dinamicos.css">
@@ -28,7 +27,9 @@
                     <img
                         src="img/cenfotec.png"
                         alt="Logo de la Universidad CENFOTEC">
+
                 </figure>
+
             </a>
             <nav>
                 <ul>
@@ -52,6 +53,7 @@
                     </li>
                 </ul>
             </nav>
+
         </div>
 
     </header>
@@ -60,21 +62,77 @@
 
         <section class="form-titulo">
 
-            <h1>Inicio de Sesión</h1>
+            <h1>Crear Cuenta</h1>
 
             <p>
 
-                Ingrese sus credenciales para acceder al sistema.
+                Complete la información para crear su cuenta de acceso.
 
             </p>
 
         </section>
 
         <form
-            id="formulario-login"
+            id="formulario-crear-cuenta"
             action="#"
             method="post"
             novalidate>
+
+            <div class="campo">
+
+                <label for="identificacion">
+
+                    Identificación
+
+                    <span class="obligatorio">*</span>
+
+                </label>
+
+                <input
+                    type="text"
+                    id="identificacion"
+                    name="identificacion"
+                    required
+                    aria-required="true"
+                    aria-describedby="ayuda-identificacion">
+
+                <div
+                    id="ayuda-identificacion"
+                    class="ayuda">
+
+                    Ingrese su número de identificación.
+
+                </div>
+
+            </div>
+
+            <div class="campo">
+
+                <label for="nombre">
+
+                    Nombre completo
+
+                    <span class="obligatorio">*</span>
+
+                </label>
+
+                <input
+                    type="text"
+                    id="nombre"
+                    name="nombre"
+                    required
+                    aria-required="true"
+                    aria-describedby="ayuda-nombre">
+
+                <div
+                    id="ayuda-nombre"
+                    class="ayuda">
+
+                    Ingrese su nombre completo.
+
+                </div>
+
+            </div>
 
             <div class="campo">
 
@@ -90,7 +148,6 @@
                     type="email"
                     id="correo"
                     name="correo"
-                    placeholder="usuario@correo.com"
                     required
                     aria-required="true"
                     aria-describedby="ayuda-correo">
@@ -119,7 +176,6 @@
                     type="password"
                     id="contrasena"
                     name="contrasena"
-                    placeholder="********"
                     required
                     aria-required="true"
                     aria-describedby="ayuda-contrasena">
@@ -128,7 +184,7 @@
                     id="ayuda-contrasena"
                     class="ayuda">
 
-                    Ingrese su contraseña.
+                    Cree una contraseña.
 
                 </div>
 
@@ -136,52 +192,27 @@
 
             <div class="campo">
 
-                <label for="rol">
+                <label for="confirmar">
 
-                    Rol
+                    Confirmar contraseña
 
                     <span class="obligatorio">*</span>
 
                 </label>
 
-                <select
-                    id="rol"
-                    name="rol"
+                <input
+                    type="password"
+                    id="confirmar"
+                    name="confirmar"
                     required
                     aria-required="true"
-                    aria-describedby="ayuda-rol">
-
-                    <option value="">
-
-                        Seleccione un rol
-
-                    </option>
-
-                    <option value="registro">
-
-                        Registro
-
-                    </option>
-
-                    <option value="bienestar">
-
-                        Bienestar Estudiantil
-
-                    </option>
-
-                    <option value="egresado">
-
-                        Egresado
-
-                    </option>
-
-                </select>
+                    aria-describedby="ayuda-confirmar">
 
                 <div
-                    id="ayuda-rol"
+                    id="ayuda-confirmar"
                     class="ayuda">
 
-                    Seleccione el rol con el que desea ingresar.
+                    Vuelva a escribir la contraseña.
 
                 </div>
 
@@ -189,9 +220,9 @@
 
             <button
                 type="submit"
-                id="btn-iniciar-sesion">
+                id="btn-crear-cuenta">
 
-                Iniciar Sesión
+                Crear cuenta
 
             </button>
 
@@ -199,11 +230,11 @@
 
                 <p class="texto-centro">
 
-                    ¿No tiene una cuenta?
+                    ¿Ya tiene una cuenta?
 
-                    <a href="crear-cuenta.html">
+                    <a href="login.html">
 
-                        Crear cuenta
+                        Iniciar sesión
 
                     </a>
 
@@ -226,7 +257,7 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="js/login.js"></script>
+    <script src="js/crear-cuenta.js"></script>
     <script src="js/menu.js"></script>
 
 </body>

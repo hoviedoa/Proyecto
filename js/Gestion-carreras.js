@@ -1,3 +1,45 @@
+const sesion = JSON.parse(localStorage.getItem("sesion"));
+
+if (sesion == null) {
+
+    Swal.fire({
+
+        title: "Acceso denegado",
+
+        text: "Debe iniciar sesión.",
+
+        icon: "warning",
+
+        confirmButtonText: "Aceptar"
+
+    }).then(function () {
+
+        window.location.href = "login.html";
+
+    });
+
+}
+
+if (sesion.rol != "registro") {
+
+    Swal.fire({
+
+        title: "Acceso denegado",
+
+        text: "No tiene permisos para ingresar.",
+
+        icon: "error",
+
+        confirmButtonText: "Aceptar"
+
+    }).then(function () {
+
+        window.location.href = "Inicio.html";
+
+    });
+
+}
+
 const inputNombre = document.getElementById("nombre");
 const inputCodigo = document.getElementById("codigo");
 const inputEscuela = document.getElementById("escuela");

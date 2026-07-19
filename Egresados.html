@@ -31,25 +31,28 @@
                 </figure>
 
             </a>
-
             <nav>
-
                 <ul>
-
-                    <li><a href="Inicio.html">Inicio</a></li>
-
-                    <li><a href="login.html">Iniciar sesión</a></li>
-
-                    <li><a href="Egresados.html">Perfil de egresados</a></li>
-
-                    <li><a href="Gestion-egresados.html">Gestión de egresados</a></li>
-
-                    <li><a href="Gestion-carreras.html">Gestión de carreras</a></li>
-
+                    <li id="menu-inicio">
+                        <a href="Inicio.html">Inicio</a>
+                    </li>
+                    <li id="menu-login">
+                        <a href="login.html">Iniciar sesión</a>
+                    </li>
+                    <li id="menu-perfil">
+                        <a href="Egresados.html">Perfil de egresados</a>
+                    </li>
+                    <li id="menu-egresados">
+                        <a href="Gestion-egresados.html">Gestión de egresados</a>
+                    </li>
+                    <li id="menu-carreras">
+                        <a href="Gestion-carreras.html">Gestión de carreras</a>
+                    </li>
+                    <li id="menu-salir">
+                        <a href="#" id="cerrar-sesion">Cerrar sesión</a>
+                    </li>
                 </ul>
-
             </nav>
-
         </div>
 
     </header>
@@ -58,75 +61,20 @@
 
         <section class="form-titulo">
 
-            <h1>Mi Perfil de Egresado</h1>
+            <h1>Perfil de Egresado</h1>
 
             <p>
-                Consulte la información de su expediente académico y profesional
+                Consulte la información registrada del egresado.
             </p>
 
         </section>
 
-        <section class="lista-carreras">
+        <section
+            class="lista-carreras"
+            id="perfil-egresado">
 
             <h2>Información del egresado</h2>
 
-            <article class="card-carrera">
-
-                <h3>Información Personal</h3>
-
-                <p><strong>Nombre Completo:</strong> Carlos Mendoza Silva</p>
-
-                <p><strong>Cédula:</strong> 1-1234-5678</p>
-
-                <p><strong>Correo:</strong> c.mendoza@cenfotec.ac.cr</p>
-
-                <p><strong>Teléfono:</strong> +506 8888-8888</p>
-
-                <div class="acciones">
-
-                    <button
-                        type="button"
-                        class="editar">
-
-                        Editar Perfil
-
-                    </button>
-
-                </div>
-
-            </article>
-
-            <article class="card-carrera">
-
-                <h3>Información Profesional</h3>
-
-                <p><strong>Empresa actual:</strong> Tech Solutions</p>
-
-                <p><strong>Puesto:</strong> Ingeniero de Software Senior</p>
-
-                <p><strong>Experiencia:</strong> 4 años</p>
-
-            </article>
-
-            <article class="card-carrera">
-
-                <h3>Títulos Obtenidos</h3>
-
-                <p><strong>Grado:</strong> Bachillerato en Ingeniería del Software (2024)</p>
-
-                <p><strong>Pregrado:</strong> Técnico Superior en Desarrollo del Software (2022)</p>
-
-            </article>
-
-            <article class="card-carrera">
-
-                <h3>Afiliación Académica</h3>
-
-                <p><strong>Carreras asociadas:</strong> Ingeniería del Software, Desarrollo del Software</p>
-
-                <p><strong>Escuelas asociadas:</strong> Escuela de Ingeniería del Software</p>
-
-            </article>
 
         </section>
 
@@ -139,6 +87,9 @@
         </p>
 
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
+    <script src="js/perfil-egresados.js"></script>
+    <script src="js/menu.js"></script>
 
 </body>
 

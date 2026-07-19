@@ -2,268 +2,203 @@
 <html lang="es">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Registro de Egresados</title>
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
 
     <link rel="stylesheet" href="css/estilos.css">
     <link rel="stylesheet" href="css/campos-dinamicos.css">
-
 </head>
 
 <body>
 
+
     <header>
-
         <div class="contenedor">
-
             <a href="Inicio.html">
-
                 <figure class="logo">
-
-                    <img
-                        src="img/cenfotec.png"
-                        alt="Logo de la Universidad CENFOTEC">
-
+                    <img src="img/cenfotec.png" alt="Logo de la Universidad CENFOTEC">
                 </figure>
-
             </a>
-
             <nav>
-
                 <ul>
-
-                    <li><a href="Inicio.html">Inicio</a></li>
-
-                    <li><a href="login.html">Iniciar sesión</a></li>
-
-                    <li><a href="Egresados.html">Perfil de egresados</a></li>
-
-                    <li><a href="Gestion-egresados.html">Gestión de egresados</a></li>
-
-                    <li><a href="Gestion-carreras.html">Gestión de carreras</a></li>
-
+                    <li id="menu-inicio">
+                        <a href="Inicio.html">Inicio</a>
+                    </li>
+                    <li id="menu-login">
+                        <a href="login.html">Iniciar sesión</a>
+                    </li>
+                    <li id="menu-perfil">
+                        <a href="Egresados.html">Perfil de egresados</a>
+                    </li>
+                    <li id="menu-egresados">
+                        <a href="Gestion-egresados.html">Gestión de egresados</a>
+                    </li>
+                    <li id="menu-carreras">
+                        <a href="Gestion-carreras.html">Gestión de carreras</a>
+                    </li>
+                    <li id="menu-salir">
+                        <a href="#" id="cerrar-sesion">Cerrar sesión</a>
+                    </li>
                 </ul>
-
             </nav>
-
         </div>
-
     </header>
 
     <main>
 
         <section class="form-titulo">
-
             <h1>Registro de Egresados</h1>
-
-            <p>
-                Complete la información para registrar un nuevo egresado
-            </p>
-
+            <p>Complete la información para registrar un nuevo egresado</p>
         </section>
 
-        <form action="#" method="post">
+
+        <form
+            id="formulario-egresado"
+            action="#"
+            method="post">
 
             <div class="campo">
-
-                <label for="identificacion">
-                    Identificación <span class="obligatorio">*</span>
-                </label>
-
-                <input
-                    type="text"
-                    id="identificacion"
-                    name="identificacion"
-                    aria-describedby="ayuda-identificacion"
-                    required>
-
-                <div
-                    id="ayuda-identificacion"
-                    class="ayuda">
-
-                    Número de cédula o identificación del egresado
-
+                <label for="identificacion">Identificación</label>
+                <span aria-hidden="true" class="obligatorio">*</span>
+                <div>
+                    <input type="text" id="identificacion" name="identificacion" placeholder="ej. 123456789" required aria-required="true" aria-describedby="ayuda-identificacion">
+                    <span id="ayuda-identificacion" class="ayuda">Número de cédula o identificación del egresado.</span>
                 </div>
+            </div>
 
+
+            <div class="campo">
+                <label for="nombre">Nombre completo</label>
+                <span aria-hidden="true" class="obligatorio">*</span>
+                <div>
+                    <input type="text" id="nombre" name="nombre" placeholder="ej. María Pérez" required aria-required="true" aria-describedby="ayuda-nombre">
+                    <span id="ayuda-nombre" class="ayuda">Nombre y apellidos del egresado.</span>
+                </div>
+            </div>
+
+
+            <div class="campo">
+                <label for="correo">Correo electrónico</label>
+                <span aria-hidden="true" class="obligatorio">*</span>
+                <div>
+                    <input type="email" id="correo" name="correo" placeholder="usuario@correo.com" required aria-required="true" aria-describedby="ayuda-correo">
+                    <span id="ayuda-correo" class="ayuda">Ejemplo: usuario@correo.com</span>
+                </div>
             </div>
 
             <div class="campo">
-
-                <label for="nombre">
-                    Nombre completo <span class="obligatorio">*</span>
-                </label>
-
-                <input
-                    type="text"
-                    id="nombre"
-                    name="nombre"
-                    aria-describedby="ayuda-nombre"
-                    required>
-
-                <div
-                    id="ayuda-nombre"
-                    class="ayuda">
-
-                    Nombre y apellidos del egresado
-
+                <label for="telefono">Teléfono</label>
+                <div>
+                    <input type="tel" id="telefono" name="telefono" placeholder="8888-8888" aria-describedby="ayuda-telefono">
+                    <span id="ayuda-telefono" class="ayuda">Número de contacto del egresado.</span>
                 </div>
-
             </div>
+
 
             <div class="campo">
-
-                <label for="correo">
-                    Correo electrónico <span class="obligatorio">*</span>
-                </label>
-
-                <input
-                    type="email"
-                    id="correo"
-                    name="correo"
-                    aria-describedby="ayuda-correo"
-                    required>
-
-                <div
-                    id="ayuda-correo"
-                    class="ayuda">
-
-                    Ejemplo: usuario@correo.com
-
+                <label for="carrera">Carrera asociada</label>
+                <span aria-hidden="true" class="obligatorio">*</span>
+                <div>
+                    <select id="carrera" name="carrera" aria-describedby="ayuda-carrera" required aria-required="true">
+                        <option value="">Seleccione una carrera</option>
+                    </select>
+                    <span id="ayuda-carrera" class="ayuda">Seleccione la carrera del egresado.</span>
                 </div>
-
             </div>
+
 
             <div class="campo">
+                <label>Lugares de trabajo</label>
+                <span class="label-opcional">(opcional)</span>
 
-                <label for="telefono">
-                    Teléfono
-                </label>
-
-                <input
-                    type="tel"
-                    id="telefono"
-                    name="telefono"
-                    placeholder="8888-8888"
-                    aria-describedby="ayuda-telefono">
-
-                <div
-                    id="ayuda-telefono"
-                    class="ayuda">
-
-                    Número de contacto del egresado
+                <div id="lugares-container">
 
                 </div>
 
+                <button type="button" class="agregar-lugar" id="agregar-lugar-btn">+ Agregar lugar de trabajo</button>
             </div>
+
 
             <div class="campo">
-
-                <label for="carrera">
-                    Carrera asociada <span class="obligatorio">*</span>
-                </label>
-
-                <select
-                    id="carrera"
-                    name="carrera"
-                    aria-describedby="ayuda-carrera"
-                    required>
-
-                    <option value="">Seleccione una carrera</option>
-
-                    <option value="Ingeniería del Software">Ingeniería del Software</option>
-
-                    <option value="Ciberseguridad">Ciberseguridad</option>
-
-                    <option value="Sistemas de Información">Sistemas de Información</option>
-
-                    <option value="Desarrollo de Software">Desarrollo de Software</option>
-
-                    <option value="Desarrollo y Diseño Web">Desarrollo y Diseño Web</option>
-
-                    <option value="Diseño Gráfico y Experiencia de Usuario">Diseño Gráfico y Experiencia de Usuario</option>
-
-                    <option value="Automatización de Pruebas de Software">Automatización de Pruebas de Software</option>
-
-                    <option value="Data Analyst">Data Analyst</option>
-
-                    <option value="Data Engineer">Data Engineer</option>
-
-                </select>
-
-                <div
-                    id="ayuda-carrera"
-                    class="ayuda">
-
-                    Seleccione la carrera del egresado
-
+                <label for="fecha">Fecha de registro</label>
+                <span aria-hidden="true" class="obligatorio">*</span>
+                <div>
+                    <input type="date" id="fecha" name="fecha" required aria-required="true" aria-describedby="ayuda-fecha">
+                    <span id="ayuda-fecha" class="ayuda">Fecha en que se registra el egresado.</span>
                 </div>
-
             </div>
 
-            <div class="campo">
-
-                <label for="empresa">
-                    Lugares de trabajo
-                </label>
-
-                <textarea
-                    id="empresa"
-                    name="empresa"
-                    aria-describedby="ayuda-empresa"
-                    placeholder="Ej: Empresa A, Empresa B, Empresa C"></textarea>
-
-                <div
-                    id="ayuda-empresa"
-                    class="ayuda">
-
-                    Puede registrar múltiples lugares de trabajo
-
-                </div>
-
-            </div>
-
-            <div class="campo">
-
-                <label for="fecha">
-                    Fecha de registro
-                </label>
-
-                <input
-                    type="date"
-                    id="fecha"
-                    name="fecha"
-                    aria-describedby="ayuda-fecha"
-                    required>
-
-                <div
-                    id="ayuda-fecha"
-                    class="ayuda">
-
-                    Fecha en que se registra el egresado
-
-                </div>
-
-            </div>
-
-            <button type="submit">
-                Guardar Egresado
+            <button type="submit" class="guardar-formulario" id="guardar-egresado">
+                Registrar egresado
             </button>
 
         </form>
 
+
+        <section class="lista-egresados" id="lista-egresados">
+            <h2>Egresados registrados</h2>
+        </section>
     </main>
 
+
     <footer>
-
-        <p>
-            © 2026 Universidad CENFOTEC | Sistema de Gestión de Egresados
-        </p>
-
+        <p>© 2026 Universidad CENFOTEC | Sistema de Gestión de Egresados</p>
     </footer>
 
-</body>
 
+    <template id="template-lugar">
+        <div class="bloque-lugar" data-index="0">
+            <button type="button" class="eliminar-lugar" aria-label="Eliminar este lugar de trabajo">
+                <i class="fa-solid fa-ban" aria-hidden="true"></i>
+            </button>
+
+
+            <div>
+                <label for="empresa-0">Empresa</label>
+                <div>
+                    <input type="text" id="empresa-0" placeholder="Nombre de la empresa" aria-describedby="ayuda-empresa-0">
+                    <span id="ayuda-empresa-0" class="texto-oculto">Nombre de la empresa donde trabajó.</span>
+                </div>
+            </div>
+
+
+            <div>
+                <label for="puesto-0">Puesto</label>
+                <div>
+                    <input type="text" id="puesto-0" placeholder="Cargo desempeñado" aria-describedby="ayuda-puesto-0">
+                    <span id="ayuda-puesto-0" class="texto-oculto">Puesto o cargo que ocupó.</span>
+                </div>
+            </div>
+
+
+            <div>
+                <label for="fecha-inicio-0">Fecha inicio</label>
+                <div>
+                    <input type="date" id="fecha-inicio-0" aria-describedby="ayuda-fecha-inicio-0">
+                    <span id="ayuda-fecha-inicio-0" class="texto-oculto">Fecha de inicio en ese puesto.</span>
+                </div>
+            </div>
+
+
+            <div>
+                <label for="fecha-fin-0">Fecha fin</label>
+                <div>
+                    <input type="date" id="fecha-fin-0" aria-describedby="ayuda-fecha-fin-0">
+                    <span id="ayuda-fecha-fin-0" class="texto-oculto">Fecha de finalización (si aplica).</span>
+                </div>
+            </div>
+        </div>
+    </template>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/gestion-egresados.js"></script>
+    <script src="js/menu.js"></script>
+
+</body>
 </html>
