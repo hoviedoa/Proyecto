@@ -61,31 +61,20 @@
     <main>
 
         <section class="form-titulo">
-
             <h1>Crear Cuenta</h1>
-
             <p>
-
                 Complete la información para crear su cuenta de acceso.
-
             </p>
-
         </section>
 
         <form
             id="formulario-crear-cuenta"
-            action="#"
-            method="post"
             novalidate>
 
             <div class="campo">
-
                 <label for="identificacion">
-
                     Identificación
-
                     <span class="obligatorio">*</span>
-
                 </label>
 
                 <input
@@ -99,23 +88,15 @@
                 <div
                     id="ayuda-identificacion"
                     class="ayuda">
-
                     Ingrese su número de identificación.
-
                 </div>
-
             </div>
 
             <div class="campo">
-
                 <label for="nombre">
-
                     Nombre completo
-
                     <span class="obligatorio">*</span>
-
                 </label>
-
                 <input
                     type="text"
                     id="nombre"
@@ -127,51 +108,62 @@
                 <div
                     id="ayuda-nombre"
                     class="ayuda">
-
                     Ingrese su nombre completo.
-
                 </div>
-
             </div>
-
-            <div class="campo">
-
-                <label for="correo">
-
-                    Correo electrónico
-
-                    <span class="obligatorio">*</span>
-
-                </label>
-
-                <input
+                <div class="campo">
+                    <label for="correo">
+                        Correo electrónico
+                        <span class="obligatorio">*</span>
+                    </label>
+                    <input
                     type="email"
                     id="correo"
                     name="correo"
                     required
                     aria-required="true"
                     aria-describedby="ayuda-correo">
-
-                <div
+                    <div
                     id="ayuda-correo"
                     class="ayuda">
-
                     Ejemplo: usuario@correo.com
-
                 </div>
-
             </div>
-
             <div class="campo">
-
-                <label for="contrasena">
-
-                    Contraseña
-
+                <label for="rol">
+                    Rol
                     <span class="obligatorio">*</span>
-
                 </label>
-
+                <select
+                id="rol"
+                name="rol"
+                required
+                aria-required="true"
+                aria-describedby="ayuda-rol">
+                <option value="">
+                    Seleccione un rol
+                </option>
+                <option value="registro">
+                    Registro
+                </option>
+                <option value="bienestar">
+                    Bienestar Estudiantil
+                </option>
+                <option value="egresado">
+                    Egresado
+                </option>
+            </select>
+            <div
+                id="ayuda-rol"
+                class="ayuda">
+                Seleccione el rol que tendrá el usuario.
+            </div>
+        </div>
+            <div class="campo">
+                <label for="contrasena">
+                    Contraseña
+                    <span class="obligatorio">*</span>
+                </label>
                 <input
                     type="password"
                     id="contrasena"
@@ -179,27 +171,18 @@
                     required
                     aria-required="true"
                     aria-describedby="ayuda-contrasena">
-
                 <div
                     id="ayuda-contrasena"
                     class="ayuda">
-
                     Cree una contraseña.
-
                 </div>
-
             </div>
 
             <div class="campo">
-
                 <label for="confirmar">
-
                     Confirmar contraseña
-
                     <span class="obligatorio">*</span>
-
                 </label>
-
                 <input
                     type="password"
                     id="confirmar"
@@ -207,57 +190,38 @@
                     required
                     aria-required="true"
                     aria-describedby="ayuda-confirmar">
-
                 <div
                     id="ayuda-confirmar"
                     class="ayuda">
-
                     Vuelva a escribir la contraseña.
-
                 </div>
-
             </div>
 
             <button
                 type="submit"
                 id="btn-crear-cuenta">
-
                 Crear cuenta
-
             </button>
 
             <div class="campo">
-
                 <p class="texto-centro">
-
                     ¿Ya tiene una cuenta?
-
                     <a href="login.html">
-
                         Iniciar sesión
-
                     </a>
-
                 </p>
-
             </div>
-
         </form>
-
     </main>
 
     <footer>
-
         <p>
-
             © 2026 Universidad CENFOTEC | Sistema de Gestión de Egresados
-
         </p>
-
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="js/crear-cuenta.js"></script>
+    <script src="js/Crear-cuenta.js"></script>
     <script src="js/menu.js"></script>
 
 </body>

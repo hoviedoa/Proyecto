@@ -112,3 +112,44 @@ footer{
     padding-right: 20px;
     margin-top: 50px;
 }
+
+.input-error{
+    border: 2px solid red !important;
+    background-color: #fff0f0;
+}
+
+.input-error:focus{
+    outline: 2px solid red;
+    outline-offset: 2px;
+}
+
+@media screen and (max-width: 768px){
+
+    .contenedor{
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav ul{
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .contenedor-tarjetas{
+        flex-direction: column;
+    }
+
+}
+.tarjeta h3 a{
+    color: #003B70;
+    text-decoration: none;
+}
+
+.tarjeta h3 a:hover{
+    color: #005DAA;
+    text-decoration: underline;
+}
+.tarjeta h3 a:visited{
+    color: #003B70;
+}

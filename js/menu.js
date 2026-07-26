@@ -1,145 +1,146 @@
+const sesionMenu = JSON.parse(localStorage.getItem("sesion"));
+
 const menuLogin = document.getElementById("menu-login");
 const menuPerfil = document.getElementById("menu-perfil");
 const menuEgresados = document.getElementById("menu-egresados");
 const menuCarreras = document.getElementById("menu-carreras");
 const menuSalir = document.getElementById("menu-salir");
 
-const sesion = JSON.parse(localStorage.getItem("sesion"));
+const botonCerrarSesion = document.getElementById("cerrar-sesion");
 
-const paginaActual = window.location.pathname.split("/").pop();
 
-if (sesion == null) {
+const botonIniciarSesion = document.getElementById("boton-iniciar-sesion");
 
-    if (menuSalir != null) {
+const tarjetaPerfil = document.getElementById("tarjeta-perfil");
+const tarjetaEgresados = document.getElementById("tarjeta-egresados");
+const tarjetaCarreras = document.getElementById("tarjeta-carreras");
 
-        menuSalir.style.display = "none";
+
+
+if (sesionMenu == null) {
+
+    menuLogin.style.display = "block";
+    menuPerfil.style.display = "none";
+    menuEgresados.style.display = "none";
+    menuCarreras.style.display = "none";
+    menuSalir.style.display = "none";
+
+
+    if (botonIniciarSesion != null) {
+
+        botonIniciarSesion.style.display = "inline-block";
 
     }
 
-    if (
-        paginaActual != "Inicio.html" &&
-        paginaActual != "login.html" &&
-        paginaActual != "crear-cuenta.html"
-    ) {
 
-        Swal.fire({
+    if (tarjetaPerfil != null) {
 
-            title: "Acceso denegado",
+        tarjetaPerfil.style.display = "block";
 
-            text: "Debe iniciar sesión.",
+    }
 
-            icon: "warning",
+    if (tarjetaEgresados != null) {
 
-            confirmButtonText: "Aceptar"
+        tarjetaEgresados.style.display = "none";
 
-        }).then(function () {
+    }
 
-            window.location.href = "login.html";
+    if (tarjetaCarreras != null) {
 
-        });
+        tarjetaCarreras.style.display = "none";
 
     }
 
 }
+
 else {
 
-    if (menuLogin != null) {
+    menuLogin.style.display = "none";
+    menuSalir.style.display = "block";
 
-        menuLogin.style.display = "none";
 
-    }
+    if (botonIniciarSesion != null) {
 
-    if (menuSalir != null) {
-
-        menuSalir.style.display = "block";
+        botonIniciarSesion.style.display = "none";
 
     }
 
-    if (sesion.rol == "registro") {
 
-        if (menuPerfil != null) menuPerfil.style.display = "none";
-        if (menuEgresados != null) menuEgresados.style.display = "block";
-        if (menuCarreras != null) menuCarreras.style.display = "block";
+    if (sesionMenu.rol == "registro") {
 
-        if (paginaActual == "Egresados.html") {
+        menuPerfil.style.display = "none";
+        menuEgresados.style.display = "block";
+        menuCarreras.style.display = "block";
 
-            Swal.fire({
+        if (tarjetaPerfil != null) {
 
-                title: "Acceso denegado",
+            tarjetaPerfil.style.display = "none";
 
-                text: "Esta página es exclusiva para egresados.",
+        }
 
-                icon: "error",
+        if (tarjetaEgresados != null) {
 
-                confirmButtonText: "Aceptar"
+            tarjetaEgresados.style.display = "block";
 
-            }).then(function () {
+        }
 
-                window.location.href = "Inicio.html";
+        if (tarjetaCarreras != null) {
 
-            });
+            tarjetaCarreras.style.display = "block";
 
         }
 
     }
 
-    else if (sesion.rol == "bienestar") {
 
-        if (menuPerfil != null) menuPerfil.style.display = "block";
-        if (menuEgresados != null) menuEgresados.style.display = "none";
-        if (menuCarreras != null) menuCarreras.style.display = "none";
+    else if (sesionMenu.rol == "egresado") {
 
-        if (
-            paginaActual == "Gestion-carreras.html" ||
-            paginaActual == "Gestion-egresados.html"
-        ) {
+        menuPerfil.style.display = "block";
+        menuEgresados.style.display = "none";
+        menuCarreras.style.display = "none";
 
-            Swal.fire({
+        if (tarjetaPerfil != null) {
 
-                title: "Acceso denegado",
+            tarjetaPerfil.style.display = "block";
 
-                text: "No posee permisos para ingresar.",
+        }
 
-                icon: "error",
+        if (tarjetaEgresados != null) {
 
-                confirmButtonText: "Aceptar"
+            tarjetaEgresados.style.display = "none";
 
-            }).then(function () {
+        }
 
-                window.location.href = "Inicio.html";
+        if (tarjetaCarreras != null) {
 
-            });
+            tarjetaCarreras.style.display = "none";
 
         }
 
     }
 
-    else if (sesion.rol == "egresado") {
 
-        if (menuPerfil != null) menuPerfil.style.display = "block";
-        if (menuEgresados != null) menuEgresados.style.display = "none";
-        if (menuCarreras != null) menuCarreras.style.display = "none";
+    else if (sesionMenu.rol == "bienestar") {
 
-        if (
-            paginaActual == "Gestion-carreras.html" ||
-            paginaActual == "Gestion-egresados.html"
-        ) {
+        menuPerfil.style.display = "none";
+        menuEgresados.style.display = "none";
+        menuCarreras.style.display = "none";
 
-            Swal.fire({
+        if (tarjetaPerfil != null) {
 
-                title: "Acceso denegado",
+            tarjetaPerfil.style.display = "none";
 
-                text: "No posee permisos para ingresar.",
+        }
 
-                icon: "error",
+        if (tarjetaEgresados != null) {
 
-                confirmButtonText: "Aceptar"
+            tarjetaEgresados.style.display = "none";
 
-            }).then(function () {
+        }
 
-                window.location.href = "Inicio.html";
+        if (tarjetaCarreras != null) {
 
-            });
+            tarjetaCarreras.style.display = "none";
 
         }
 
@@ -147,17 +148,38 @@ else {
 
 }
 
-const cerrarSesion = document.getElementById("cerrar-sesion");
 
-if (cerrarSesion != null) {
+if (botonCerrarSesion != null) {
 
-    cerrarSesion.addEventListener("click", function (event) {
+    botonCerrarSesion.addEventListener("click", function (event) {
 
         event.preventDefault();
 
-        localStorage.removeItem("sesion");
+        Swal.fire({
 
-        window.location.href = "login.html";
+            title: "Cerrar sesión",
+
+            text: "¿Desea cerrar la sesión actual?",
+
+            icon: "question",
+
+            showCancelButton: true,
+
+            confirmButtonText: "Sí",
+
+            cancelButtonText: "Cancelar"
+
+        }).then(function (resultado) {
+
+            if (resultado.isConfirmed) {
+
+                localStorage.removeItem("sesion");
+
+                window.location.href = "Inicio.html";
+
+            }
+
+        });
 
     });
 

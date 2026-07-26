@@ -1,12 +1,19 @@
 const inputIdentificacion = document.getElementById("identificacion");
+
 const inputNombre = document.getElementById("nombre");
+
 const inputCorreo = document.getElementById("correo");
+
+const inputRol = document.getElementById("rol");
+
 const inputContrasena = document.getElementById("contrasena");
+
 const inputConfirmar = document.getElementById("confirmar");
 
-const formularioCrearCuenta = document.getElementById("formulario-crear-cuenta");
 
-const btnCrearCuenta = document.getElementById("btn-crear-cuenta");
+const formularioCrearCuenta = document.getElementById(
+    "formulario-crear-cuenta"
+);
 
 
 function validarIdentificacion(identificacion) {
@@ -30,6 +37,13 @@ function validarCorreo(correo) {
 }
 
 
+function validarRol(rol) {
+
+    return rol != "";
+
+}
+
+
 function validarContrasena(contrasena) {
 
     return contrasena.length >= 8;
@@ -39,7 +53,11 @@ function validarContrasena(contrasena) {
 
 function validarConfirmacion() {
 
-    return inputContrasena.value === inputConfirmar.value;
+    const contrasena = inputContrasena.value;
+
+    const confirmar = inputConfirmar.value;
+
+    return confirmar.length >= 8 && contrasena === confirmar;
 
 }
 
@@ -51,20 +69,28 @@ function resaltarCampos() {
 
     const identificacion = inputIdentificacion.value.trim();
 
+    const nombre = inputNombre.value.trim();
+
+    const correo = inputCorreo.value.trim();
+
+    const rol = inputRol.value;
+
+    const contrasena = inputContrasena.value;
+
+
     if (!validarIdentificacion(identificacion)) {
 
         inputIdentificacion.classList.add("input-error");
 
         error = true;
 
-    } else {
+    }
+    else {
 
         inputIdentificacion.classList.remove("input-error");
 
     }
 
-
-    const nombre = inputNombre.value.trim();
 
     if (!validarNombre(nombre)) {
 
@@ -72,14 +98,13 @@ function resaltarCampos() {
 
         error = true;
 
-    } else {
+    }
+    else {
 
         inputNombre.classList.remove("input-error");
 
     }
 
-
-    const correo = inputCorreo.value.trim();
 
     if (!validarCorreo(correo)) {
 
@@ -87,14 +112,27 @@ function resaltarCampos() {
 
         error = true;
 
-    } else {
+    }
+    else {
 
         inputCorreo.classList.remove("input-error");
 
     }
 
 
-    const contrasena = inputContrasena.value;
+    if (!validarRol(rol)) {
+
+        inputRol.classList.add("input-error");
+
+        error = true;
+
+    }
+    else {
+
+        inputRol.classList.remove("input-error");
+
+    }
+
 
     if (!validarContrasena(contrasena)) {
 
@@ -102,7 +140,8 @@ function resaltarCampos() {
 
         error = true;
 
-    } else {
+    }
+    else {
 
         inputContrasena.classList.remove("input-error");
 
@@ -115,20 +154,26 @@ function resaltarCampos() {
 
         error = true;
 
-    } else {
+    }
+    else {
 
         inputConfirmar.classList.remove("input-error");
 
     }
 
+
     return error;
 
 }
+
+
 function crearCuenta(event) {
 
     event.preventDefault();
 
+
     const error = resaltarCampos();
+
 
     if (error) {
 
@@ -148,7 +193,9 @@ function crearCuenta(event) {
 
     }
 
+
     let usuarios = JSON.parse(localStorage.getItem("usuarios"));
+
 
     if (usuarios == null) {
 
@@ -156,11 +203,18 @@ function crearCuenta(event) {
 
     }
 
+
+    const identificacion = inputIdentificacion.value.trim();
+
     const correo = inputCorreo.value.trim();
+
 
     for (let i = 0; i < usuarios.length; i++) {
 
         if (usuarios[i].correo == correo) {
+
+            inputCorreo.classList.add("input-error");
+
 
             Swal.fire({
 
@@ -178,24 +232,69 @@ function crearCuenta(event) {
 
         }
 
+
+        if (usuarios[i].identificacion == identificacion) {
+
+            inputIdentificacion.classList.add("input-error");
+
+
+            Swal.fire({
+
+                title: "Identificación ya registrada",
+
+                text: "Ya existe una cuenta con esa identificación.",
+
+                icon: "error",
+
+                confirmButtonText: "Aceptar"
+
+            });
+
+            return;
+
+        }
+
     }
+
+
     const usuario = {
-        identificacion: inputIdentificacion.value.trim(),
-        correo: inputCorreo.value.trim(),
-        contrasena: inputContrasena.value,
+
+        identificacion: identificacion,
+
+        nombre: inputNombre.value.trim(),
+
+        correo: correo,
+
         rol: inputRol.value,
+
+        contrasena: inputContrasena.value,
+
         telefono: "",
+
         empresa: "",
+
         puesto: "",
+
         area: "",
+
         linkedin: "",
+
         portafolio: ""
+
     };
+
+
     usuarios.push(usuario);
+
+
     localStorage.setItem(
+
         "usuarios",
+
         JSON.stringify(usuarios)
+
     );
+
 
     Swal.fire({
 
@@ -212,11 +311,52 @@ function crearCuenta(event) {
         window.location.href = "login.html";
 
     });
+
 }
-btnCrearCuenta.addEventListener(
 
-    "click",
 
-    crearCuenta
+formularioCrearCuenta.addEventListener("submit", crearCuenta);
 
-);
+
+inputIdentificacion.addEventListener("input", function () {
+
+    inputIdentificacion.classList.remove("input-error");
+
+});
+
+
+inputNombre.addEventListener("input", function () {
+
+    inputNombre.classList.remove("input-error");
+
+});
+
+
+inputCorreo.addEventListener("input", function () {
+
+    inputCorreo.classList.remove("input-error");
+
+});
+
+
+inputRol.addEventListener("change", function () {
+
+    inputRol.classList.remove("input-error");
+
+});
+
+
+inputContrasena.addEventListener("input", function () {
+
+    inputContrasena.classList.remove("input-error");
+
+    inputConfirmar.classList.remove("input-error");
+
+});
+
+
+inputConfirmar.addEventListener("input", function () {
+
+    inputConfirmar.classList.remove("input-error");
+
+});

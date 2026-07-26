@@ -1,70 +1,10 @@
-let usuarios = JSON.parse(localStorage.getItem("usuarios"));
-
-if (usuarios == null) {
-
-    usuarios = [];
-
-}
-
-let existeRegistro = false;
-let existeBienestar = false;
-
-for (let i = 0; i < usuarios.length; i++) {
-
-    if (usuarios[i].rol == "registro") {
-
-        existeRegistro = true;
-
-    }
-
-    if (usuarios[i].rol == "bienestar") {
-
-        existeBienestar = true;
-
-    }
-
-}
-
-if (!existeRegistro) {
-
-    usuarios.push({
-
-        identificacion: "000000001",
-        correo: "registro@cenfotec.ac.cr",
-        contrasena: "Registro123",
-        rol: "registro"
-
-    });
-
-}
-
-if (!existeBienestar) {
-
-    usuarios.push({
-
-        identificacion: "000000002",
-        correo: "bienestar@cenfotec.ac.cr",
-        contrasena: "Bienestar123",
-        rol: "bienestar"
-
-    });
-
-}
-
-localStorage.setItem(
-
-    "usuarios",
-
-    JSON.stringify(usuarios)
-
-);
-
 const inputCorreo = document.getElementById("correo");
+
 const inputContrasena = document.getElementById("contrasena");
+
 const inputRol = document.getElementById("rol");
 
 const formularioLogin = document.getElementById("formulario-login");
-const btnIniciarSesion = document.getElementById("btn-iniciar-sesion");
 
 
 function validarCorreo(correo) {
@@ -92,8 +32,12 @@ function resaltarCampos() {
 
     let error = false;
 
-
     const correo = inputCorreo.value.trim();
+
+    const contrasena = inputContrasena.value;
+
+    const rol = inputRol.value;
+
 
     if (!validarCorreo(correo)) {
 
@@ -101,14 +45,13 @@ function resaltarCampos() {
 
         error = true;
 
-    } else {
+    }
+    else {
 
         inputCorreo.classList.remove("input-error");
 
     }
 
-
-    const contrasena = inputContrasena.value;
 
     if (!validarContrasena(contrasena)) {
 
@@ -116,14 +59,13 @@ function resaltarCampos() {
 
         error = true;
 
-    } else {
+    }
+    else {
 
         inputContrasena.classList.remove("input-error");
 
     }
 
-
-    const rol = inputRol.value;
 
     if (!validarRol(rol)) {
 
@@ -131,20 +73,26 @@ function resaltarCampos() {
 
         error = true;
 
-    } else {
+    }
+    else {
 
         inputRol.classList.remove("input-error");
 
     }
 
+
     return error;
 
 }
+
+
 function iniciarSesion(event) {
 
     event.preventDefault();
 
+
     const error = resaltarCampos();
+
 
     if (error) {
 
@@ -167,6 +115,7 @@ function iniciarSesion(event) {
 
     let usuarios = JSON.parse(localStorage.getItem("usuarios"));
 
+
     if (usuarios == null) {
 
         usuarios = [];
@@ -175,8 +124,11 @@ function iniciarSesion(event) {
 
 
     const correo = inputCorreo.value.trim();
+
     const contrasena = inputContrasena.value;
+
     const rol = inputRol.value;
+
 
     let usuarioEncontrado = null;
 
@@ -203,6 +155,13 @@ function iniciarSesion(event) {
 
 
     if (usuarioEncontrado == null) {
+
+        inputCorreo.classList.add("input-error");
+
+        inputContrasena.classList.add("input-error");
+
+        inputRol.classList.add("input-error");
+
 
         Swal.fire({
 
@@ -247,91 +206,41 @@ function iniciarSesion(event) {
             window.location.href = "Gestion-egresados.html";
 
         }
-
-        else if (rol == "bienestar") {
+        else if (rol == "egresado") {
 
             window.location.href = "Egresados.html";
 
         }
-
         else {
 
-            window.location.href = "Egresados.html";
+            window.location.href = "Inicio.html";
 
         }
 
     });
 
 }
-btnIniciarSesion.addEventListener(
 
-    "click",
 
-    iniciarSesion
+formularioLogin.addEventListener("submit", iniciarSesion);
 
-);
 
-const menuLogin = document.getElementById("menu-login");
-const menuPerfil = document.getElementById("menu-perfil");
-const menuEgresados = document.getElementById("menu-egresados");
-const menuCarreras = document.getElementById("menu-carreras");
-const menuSalir = document.getElementById("menu-salir");
+inputCorreo.addEventListener("input", function () {
 
-const sesion = JSON.parse(localStorage.getItem("sesion"));
+    inputCorreo.classList.remove("input-error");
 
-if (sesion != null) {
+});
 
-    menuLogin.style.display = "none";
 
-    menuSalir.style.display = "block";
+inputContrasena.addEventListener("input", function () {
 
-    if (sesion.rol == "registro") {
+    inputContrasena.classList.remove("input-error");
 
-        menuPerfil.style.display = "none";
+});
 
-        menuEgresados.style.display = "block";
 
-        menuCarreras.style.display = "block";
+inputRol.addEventListener("change", function () {
 
-    }
+    inputRol.classList.remove("input-error");
 
-    else if (sesion.rol == "bienestar") {
-
-        menuPerfil.style.display = "block";
-
-        menuEgresados.style.display = "none";
-
-        menuCarreras.style.display = "none";
-
-    }
-
-    else {
-
-        menuPerfil.style.display = "block";
-
-        menuEgresados.style.display = "none";
-
-        menuCarreras.style.display = "none";
-
-    }
-}
-else {
-
-    menuSalir.style.display = "none";
-
-}
-const cerrarSesion = document.getElementById("cerrar-sesion");
-
-if (cerrarSesion != null) {
-
-    cerrarSesion.addEventListener("click", function (event) {
-
-        event.preventDefault();
-
-        localStorage.removeItem("sesion");
-
-        window.location.href = "login.html";
-
-    });
-
-}
+});

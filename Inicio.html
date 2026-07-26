@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -6,12 +5,13 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
     <title>Sistema de Gestión de Egresados</title>
 
     <link rel="stylesheet" href="css/estilos.css">
-    <link rel="stylesheet" href="css/campos-dinamicos.css">
 
 </head>
 
@@ -32,27 +32,65 @@
                 </figure>
 
             </a>
+
             <nav>
+
                 <ul>
+
                     <li id="menu-inicio">
-                        <a href="Inicio.html">Inicio</a>
+
+                        <a href="Inicio.html">
+                            Inicio
+                        </a>
+
                     </li>
+
                     <li id="menu-login">
-                        <a href="login.html">Iniciar sesión</a>
+
+                        <a href="login.html">
+                            Iniciar sesión
+                        </a>
+
                     </li>
+
                     <li id="menu-perfil">
-                        <a href="Egresados.html">Perfil de egresados</a>
+
+                        <a href="Egresados.html">
+                            Perfil de egresados
+                        </a>
+
                     </li>
+
                     <li id="menu-egresados">
-                        <a href="Gestion-egresados.html">Gestión de egresados</a>
+
+                        <a href="Gestion-egresados.html">
+                            Gestión de egresados
+                        </a>
+
                     </li>
+
                     <li id="menu-carreras">
-                        <a href="Gestion-carreras.html">Gestión de carreras</a>
+
+                        <a href="Gestion-carreras.html">
+                            Gestión de carreras
+                        </a>
+
                     </li>
+
                     <li id="menu-salir">
-                        <a href="#" id="cerrar-sesion">Cerrar sesión</a>
+
+                        <a
+                            href="#"
+                            id="cerrar-sesion">
+
+                            Cerrar sesión
+
+                        </a>
+
                     </li>
+
                 </ul>
+
             </nav>
 
         </div>
@@ -72,7 +110,8 @@
 
             <a
                 href="login.html"
-                class="boton">
+                class="boton"
+                id="boton-iniciar-sesion">
 
                 Iniciar sesión
 
@@ -86,7 +125,9 @@
 
             <div class="contenedor-tarjetas">
 
-                <article class="tarjeta">
+                <article
+                    class="tarjeta"
+                    id="tarjeta-perfil">
 
                     <h3>
 
@@ -97,12 +138,15 @@
                     </h3>
 
                     <p>
-                        Consulte la información personal y profesional del egresado.
+                        Consulte la información personal y profesional
+                        del egresado.
                     </p>
 
                 </article>
 
-                <article class="tarjeta">
+                <article
+                    class="tarjeta"
+                    id="tarjeta-egresados">
 
                     <h3>
 
@@ -113,12 +157,14 @@
                     </h3>
 
                     <p>
-                        Registre nuevos egresados en el sistema.
+                        Registre y administre los egresados del sistema.
                     </p>
 
                 </article>
 
-                <article class="tarjeta">
+                <article
+                    class="tarjeta"
+                    id="tarjeta-carreras">
 
                     <h3>
 
@@ -129,7 +175,8 @@
                     </h3>
 
                     <p>
-                        Registre las carreras disponibles en la universidad.
+                        Registre y administre las carreras disponibles
+                        en la universidad.
                     </p>
 
                 </article>
@@ -143,11 +190,13 @@
     <footer>
 
         <p>
-            © 2026 Universidad CENFOTEC | Sistema de Gestión de Egresados
+            © 2026 Universidad CENFOTEC |
+            Sistema de Gestión de Egresados
         </p>
 
     </footer>
-    
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="js/menu.js"></script>
 
 </body>
