@@ -1,3 +1,6 @@
+const URL_EGRESADOS = "http://localhost:3000/egresados";
+
+
 const formulario = document.getElementById("formulario-egresado");
 
 const identificacion = document.getElementById("identificacion");
@@ -13,30 +16,21 @@ const carrera = document.getElementById("carrera");
 const fecha = document.getElementById("fecha");
 
 
-const lugaresContainer = document.getElementById(
-    "lugares-container"
-);
+const lugaresContainer =
+    document.getElementById("lugares-container");
 
-const botonAgregarLugar = document.getElementById(
-    "agregar-lugar-btn"
-);
+const botonAgregarLugar =
+    document.getElementById("agregar-lugar-btn");
 
-const templateLugar = document.getElementById(
-    "template-lugar"
-);
+const templateLugar =
+    document.getElementById("template-lugar");
 
-const listaEgresados = document.getElementById(
-    "lista-egresados"
-);
-
-const botonGuardar = document.getElementById(
-    "guardar-egresado"
-);
+const listaEgresados =
+    document.getElementById("lista-egresados");
 
 
 let contadorLugar = 0;
 
-let indiceEgresadoEditando = -1;
 
 
 function cargarCarreras() {
@@ -44,7 +38,6 @@ function cargarCarreras() {
     let carreras = JSON.parse(
         localStorage.getItem("carreras")
     );
-
 
     if (carreras == null) {
 
@@ -79,139 +72,30 @@ function cargarCarreras() {
 }
 
 
-function agregarLugar(datosLugar) {
 
-    const nuevoLugar = templateLugar.content.cloneNode(true);
+botonAgregarLugar.addEventListener("click", function () {
 
-    const bloque = nuevoLugar.querySelector(".bloque-lugar");
+    const nuevoLugar =
+        templateLugar.content.cloneNode(true);
+
+    const bloque =
+        nuevoLugar.querySelector(".bloque-lugar");
 
 
     bloque.dataset.index = contadorLugar;
 
 
-    const labelEmpresa = bloque.querySelector(
-        "label[for='empresa-0']"
-    );
+    bloque.querySelector("#empresa-0").id =
+        "empresa-" + contadorLugar;
 
-    const inputEmpresa = bloque.querySelector("#empresa-0");
+    bloque.querySelector("#puesto-0").id =
+        "puesto-" + contadorLugar;
 
-    const ayudaEmpresa = bloque.querySelector(
-        "#ayuda-empresa-0"
-    );
-
-
-    const labelPuesto = bloque.querySelector(
-        "label[for='puesto-0']"
-    );
-
-    const inputPuesto = bloque.querySelector("#puesto-0");
-
-    const ayudaPuesto = bloque.querySelector(
-        "#ayuda-puesto-0"
-    );
-
-
-    const labelFechaInicio = bloque.querySelector(
-        "label[for='fecha-inicio-0']"
-    );
-
-    const inputFechaInicio = bloque.querySelector(
-        "#fecha-inicio-0"
-    );
-
-    const ayudaFechaInicio = bloque.querySelector(
-        "#ayuda-fecha-inicio-0"
-    );
-
-
-    const labelFechaFin = bloque.querySelector(
-        "label[for='fecha-fin-0']"
-    );
-
-    const inputFechaFin = bloque.querySelector(
-        "#fecha-fin-0"
-    );
-
-    const ayudaFechaFin = bloque.querySelector(
-        "#ayuda-fecha-fin-0"
-    );
-
-
-    inputEmpresa.id = "empresa-" + contadorLugar;
-
-    labelEmpresa.setAttribute(
-        "for",
-        "empresa-" + contadorLugar
-    );
-
-    ayudaEmpresa.id = "ayuda-empresa-" + contadorLugar;
-
-    inputEmpresa.setAttribute(
-        "aria-describedby",
-        "ayuda-empresa-" + contadorLugar
-    );
-
-
-    inputPuesto.id = "puesto-" + contadorLugar;
-
-    labelPuesto.setAttribute(
-        "for",
-        "puesto-" + contadorLugar
-    );
-
-    ayudaPuesto.id = "ayuda-puesto-" + contadorLugar;
-
-    inputPuesto.setAttribute(
-        "aria-describedby",
-        "ayuda-puesto-" + contadorLugar
-    );
-
-
-    inputFechaInicio.id =
+    bloque.querySelector("#fecha-inicio-0").id =
         "fecha-inicio-" + contadorLugar;
 
-    labelFechaInicio.setAttribute(
-        "for",
-        "fecha-inicio-" + contadorLugar
-    );
-
-    ayudaFechaInicio.id =
-        "ayuda-fecha-inicio-" + contadorLugar;
-
-    inputFechaInicio.setAttribute(
-        "aria-describedby",
-        "ayuda-fecha-inicio-" + contadorLugar
-    );
-
-
-    inputFechaFin.id =
+    bloque.querySelector("#fecha-fin-0").id =
         "fecha-fin-" + contadorLugar;
-
-    labelFechaFin.setAttribute(
-        "for",
-        "fecha-fin-" + contadorLugar
-    );
-
-    ayudaFechaFin.id =
-        "ayuda-fecha-fin-" + contadorLugar;
-
-    inputFechaFin.setAttribute(
-        "aria-describedby",
-        "ayuda-fecha-fin-" + contadorLugar
-    );
-
-
-    if (datosLugar != null) {
-
-        inputEmpresa.value = datosLugar.empresa;
-
-        inputPuesto.value = datosLugar.puesto;
-
-        inputFechaInicio.value = datosLugar.fechaInicio;
-
-        inputFechaFin.value = datosLugar.fechaFin;
-
-    }
 
 
     lugaresContainer.appendChild(nuevoLugar);
@@ -219,78 +103,62 @@ function agregarLugar(datosLugar) {
 
     contadorLugar++;
 
-}
-
-
-botonAgregarLugar.addEventListener("click", function () {
-
-    agregarLugar(null);
-
 });
+
 
 
 lugaresContainer.addEventListener("click", function (event) {
 
-    const botonEliminar = event.target.closest(
-        ".eliminar-lugar"
-    );
+    if (event.target.closest(".eliminar-lugar")) {
 
+        const bloque =
+            event.target.closest(".bloque-lugar");
 
-    if (botonEliminar != null) {
-
-        const bloqueLugar = botonEliminar.closest(
-            ".bloque-lugar"
-        );
-
-
-        bloqueLugar.remove();
+        bloque.remove();
 
     }
 
 });
 
 
+
 function obtenerLugares() {
 
-    const lugares = lugaresContainer.querySelectorAll(
-        ".bloque-lugar"
-    );
-
+    const lugares =
+        document.querySelectorAll(".bloque-lugar");
 
     let lista = [];
 
 
     for (let i = 0; i < lugares.length; i++) {
 
-        const empresaLugar = lugares[i]
-            .querySelector("input[id^='empresa']")
-            .value
-            .trim();
+        const empresaLugar =
+            lugares[i]
+                .querySelector("input[id^='empresa']")
+                .value
+                .trim();
 
-        const puestoLugar = lugares[i]
-            .querySelector("input[id^='puesto']")
-            .value
-            .trim();
+        const puestoLugar =
+            lugares[i]
+                .querySelector("input[id^='puesto']")
+                .value
+                .trim();
 
-        const fechaInicioLugar = lugares[i]
-            .querySelector("input[id^='fecha-inicio']")
-            .value;
+        const fechaInicioLugar =
+            lugares[i]
+                .querySelector("input[id^='fecha-inicio']")
+                .value;
 
-        const fechaFinLugar = lugares[i]
-            .querySelector("input[id^='fecha-fin']")
-            .value;
+        const fechaFinLugar =
+            lugares[i]
+                .querySelector("input[id^='fecha-fin']")
+                .value;
 
 
         if (
-
-            empresaLugar != "" ||
-
-            puestoLugar != "" ||
-
-            fechaInicioLugar != "" ||
-
-            fechaFinLugar != ""
-
+            empresaLugar != "" &&
+            puestoLugar != "" &&
+            fechaInicioLugar != ""
         ) {
 
             lista.push({
@@ -313,6 +181,7 @@ function obtenerLugares() {
     return lista;
 
 }
+
 
 
 function validarIdentificacion(valor) {
@@ -338,16 +207,10 @@ function validarCorreo(valor) {
 
 function validarTelefono(valor) {
 
-    if (valor == "") {
-
-        return true;
-
-    }
-
-
     return /^[0-9]{4}-?[0-9]{4}$/.test(valor);
 
 }
+
 
 
 function validarFormulario() {
@@ -355,7 +218,9 @@ function validarFormulario() {
     let error = false;
 
 
-    if (!validarIdentificacion(identificacion.value.trim())) {
+    if (!validarIdentificacion(
+        identificacion.value.trim()
+    )) {
 
         identificacion.classList.add("input-error");
 
@@ -444,102 +309,43 @@ function validarFormulario() {
 }
 
 
-function datoRepetido(egresados) {
 
-    const identificacionIngresada =
-        identificacion.value.trim();
+function crearObjetoServidor() {
 
-    const correoIngresado =
-        correo.value.trim();
+    const egresadoServidor = {
 
+        identificacion: identificacion.value.trim(),
 
-    for (let i = 0; i < egresados.length; i++) {
+        nombreCompleto: nombre.value.trim(),
 
-        if (i != indiceEgresadoEditando) {
+        correoElectronico: correo.value.trim(),
 
-            if (
+        telefono: telefono.value.trim(),
 
-                egresados[i].identificacion ==
-                identificacionIngresada
+        fechaRegistro: fecha.value,
 
-            ) {
+        lugaresTrabajo: obtenerLugares(),
 
-                identificacion.classList.add("input-error");
+        empresaActual: "",
 
+        puestoActual: "",
 
-                Swal.fire({
+        areaProfesional: "",
 
-                    title: "Identificación repetida",
+        linkedin: "",
 
-                    text: "Ya existe un egresado con esa identificación.",
+        portafolio: ""
 
-                    icon: "error",
-
-                    confirmButtonText: "Aceptar"
-
-                });
+    };
 
 
-                return true;
-
-            }
-
-
-            if (egresados[i].correo == correoIngresado) {
-
-                correo.classList.add("input-error");
-
-
-                Swal.fire({
-
-                    title: "Correo repetido",
-
-                    text: "Ya existe un egresado con ese correo.",
-
-                    icon: "error",
-
-                    confirmButtonText: "Aceptar"
-
-                });
-
-
-                return true;
-
-            }
-
-        }
-
-    }
-
-
-    return false;
+    return egresadoServidor;
 
 }
 
 
-function guardarEgresado(event) {
 
-    event.preventDefault();
-
-
-    if (!validarFormulario()) {
-
-        Swal.fire({
-
-            title: "No se pudo registrar el egresado",
-
-            text: "Complete correctamente los campos resaltados.",
-
-            icon: "warning",
-
-            confirmButtonText: "Aceptar"
-
-        });
-
-        return;
-
-    }
-
+function guardarCopiaLocal() {
 
     let egresados = JSON.parse(
         localStorage.getItem("egresados")
@@ -553,14 +359,7 @@ function guardarEgresado(event) {
     }
 
 
-    if (datoRepetido(egresados)) {
-
-        return;
-
-    }
-
-
-    const egresado = {
+    const egresadoLocal = {
 
         identificacion: identificacion.value.trim(),
 
@@ -589,67 +388,7 @@ function guardarEgresado(event) {
     };
 
 
-    if (indiceEgresadoEditando == -1) {
-
-        egresados.push(egresado);
-
-
-        Swal.fire({
-
-            title: "Egresado registrado",
-
-            text: "El egresado fue guardado correctamente.",
-
-            icon: "success",
-
-            confirmButtonText: "Aceptar"
-
-        });
-
-    }
-    else {
-
-        const egresadoAnterior =
-            egresados[indiceEgresadoEditando];
-
-
-        egresado.empresa =
-            egresadoAnterior.empresa || "";
-
-        egresado.puesto =
-            egresadoAnterior.puesto || "";
-
-        egresado.area =
-            egresadoAnterior.area || "";
-
-        egresado.linkedin =
-            egresadoAnterior.linkedin || "";
-
-        egresado.portafolio =
-            egresadoAnterior.portafolio || "";
-
-
-        egresados[indiceEgresadoEditando] = egresado;
-
-
-        indiceEgresadoEditando = -1;
-
-        botonGuardar.textContent = "Registrar egresado";
-
-
-        Swal.fire({
-
-            title: "Egresado actualizado",
-
-            text: "La información fue actualizada correctamente.",
-
-            icon: "success",
-
-            confirmButtonText: "Aceptar"
-
-        });
-
-    }
+    egresados.push(egresadoLocal);
 
 
     localStorage.setItem(
@@ -660,39 +399,190 @@ function guardarEgresado(event) {
 
     );
 
+}
 
-    limpiarFormulario();
 
-    mostrarEgresados();
+
+async function registrarEgresado(event) {
+
+    event.preventDefault();
+
+
+    if (!validarFormulario()) {
+
+        Swal.fire({
+
+            title: "No se pudo registrar el egresado",
+
+            text: "Complete correctamente los campos resaltados.",
+
+            icon: "warning",
+
+            confirmButtonText: "Aceptar"
+
+        });
+
+        return;
+
+    }
+
+
+    const egresadoServidor =
+        crearObjetoServidor();
+
+
+    try {
+
+        const respuesta = await fetch(
+            URL_EGRESADOS,
+            {
+
+                method: "POST",
+
+                headers: {
+
+                    "Content-Type": "application/json"
+
+                },
+
+                body: JSON.stringify(
+                    egresadoServidor
+                )
+
+            }
+        );
+
+
+        const datosRespuesta =
+            await respuesta.json();
+
+
+        if (!respuesta.ok) {
+
+            let mensajeError =
+                "No se pudo registrar el egresado.";
+
+
+            if (datosRespuesta.mensajeError) {
+
+                mensajeError =
+                    datosRespuesta.mensajeError;
+
+            }
+
+
+            throw new Error(mensajeError);
+
+        }
+
+
+        guardarCopiaLocal();
+
+
+        Swal.fire({
+
+            title: "Egresado registrado",
+
+            text: "El egresado fue enviado al servidor correctamente.",
+
+            icon: "success",
+
+            confirmButtonText: "Aceptar"
+
+        });
+
+
+        formulario.reset();
+
+        lugaresContainer.innerHTML = "";
+
+        contadorLugar = 0;
+
+
+        cargarCarreras();
+
+
+        await consultarEgresados();
+
+    }
+    catch (error) {
+
+        Swal.fire({
+
+            title: "Error",
+
+            text: error.message,
+
+            icon: "error",
+
+            confirmButtonText: "Aceptar"
+
+        });
+
+    }
 
 }
 
 
-function limpiarFormulario() {
 
-    formulario.reset();
+async function consultarEgresados() {
 
-    lugaresContainer.innerHTML = "";
+    try {
 
-    contadorLugar = 0;
+        const respuesta = await fetch(
+            URL_EGRESADOS
+        );
 
 
-    identificacion.classList.remove("input-error");
+        if (!respuesta.ok) {
 
-    nombre.classList.remove("input-error");
+            throw new Error(
+                "No se pudieron consultar los egresados."
+            );
 
-    correo.classList.remove("input-error");
+        }
 
-    telefono.classList.remove("input-error");
 
-    carrera.classList.remove("input-error");
+        const egresados =
+            await respuesta.json();
 
-    fecha.classList.remove("input-error");
+
+        mostrarEgresados(egresados);
+
+    }
+    catch (error) {
+
+        listaEgresados.innerHTML = `
+
+            <h2>Egresados registrados</h2>
+
+            <p>
+                No fue posible cargar los datos
+                desde el servidor.
+            </p>
+
+        `;
+
+
+        Swal.fire({
+
+            title: "Error de conexión",
+
+            text: error.message,
+
+            icon: "error",
+
+            confirmButtonText: "Aceptar"
+
+        });
+
+    }
 
 }
 
 
-function mostrarEgresados() {
+
+function mostrarEgresados(egresados) {
 
     listaEgresados.innerHTML = `
 
@@ -701,23 +591,14 @@ function mostrarEgresados() {
     `;
 
 
-    let egresados = JSON.parse(
-        localStorage.getItem("egresados")
-    );
-
-
-    if (egresados == null) {
-
-        egresados = [];
-
-    }
-
-
     if (egresados.length == 0) {
 
         listaEgresados.innerHTML += `
 
-            <p>No hay egresados registrados.</p>
+            <p>
+                No hay egresados registrados
+                en el servidor.
+            </p>
 
         `;
 
@@ -728,58 +609,60 @@ function mostrarEgresados() {
 
     for (let i = 0; i < egresados.length; i++) {
 
+        const egresado = egresados[i];
+
+
+        let fechaMostrar =
+            egresado.fechaRegistro;
+
+
+        if (fechaMostrar != null) {
+
+            fechaMostrar =
+                fechaMostrar.substring(0, 10);
+
+        }
+
+
         listaEgresados.innerHTML += `
 
             <article class="card-carrera">
 
-                <h3>${egresados[i].nombre}</h3>
+                <h3>
+                    ${egresado.nombreCompleto}
+                </h3>
 
                 <p>
-                    <strong>Identificación:</strong>
-                    ${egresados[i].identificacion}
+                    <strong>
+                        Identificación:
+                    </strong>
+
+                    ${egresado.identificacion}
                 </p>
 
                 <p>
-                    <strong>Correo:</strong>
-                    ${egresados[i].correo}
+                    <strong>
+                        Correo:
+                    </strong>
+
+                    ${egresado.correoElectronico}
                 </p>
 
                 <p>
-                    <strong>Teléfono:</strong>
-                    ${egresados[i].telefono || "No registrado"}
+                    <strong>
+                        Teléfono:
+                    </strong>
+
+                    ${egresado.telefono}
                 </p>
 
                 <p>
-                    <strong>Carrera:</strong>
-                    ${egresados[i].carrera}
+                    <strong>
+                        Fecha de registro:
+                    </strong>
+
+                    ${fechaMostrar}
                 </p>
-
-                <p>
-                    <strong>Fecha:</strong>
-                    ${egresados[i].fecha}
-                </p>
-
-                <div class="acciones">
-
-                    <button
-                        type="button"
-                        class="editar"
-                        onclick="editarEgresado(${i})">
-
-                        Editar
-
-                    </button>
-
-                    <button
-                        type="button"
-                        class="eliminar"
-                        onclick="eliminarEgresado(${i})">
-
-                        Eliminar
-
-                    </button>
-
-                </div>
 
             </article>
 
@@ -789,156 +672,6 @@ function mostrarEgresados() {
 
 }
 
-
-function editarEgresado(indice) {
-
-    let egresados = JSON.parse(
-        localStorage.getItem("egresados")
-    );
-
-
-    if (egresados == null) {
-
-        return;
-
-    }
-
-
-    const egresado = egresados[indice];
-
-
-    identificacion.value = egresado.identificacion;
-
-    nombre.value = egresado.nombre;
-
-    correo.value = egresado.correo;
-
-    telefono.value = egresado.telefono;
-
-    carrera.value = egresado.carrera;
-
-    fecha.value = egresado.fecha;
-
-
-    lugaresContainer.innerHTML = "";
-
-    contadorLugar = 0;
-
-
-    if (egresado.lugaresTrabajo != null) {
-
-        for (
-
-            let i = 0;
-
-            i < egresado.lugaresTrabajo.length;
-
-            i++
-
-        ) {
-
-            agregarLugar(egresado.lugaresTrabajo[i]);
-
-        }
-
-    }
-
-
-    indiceEgresadoEditando = indice;
-
-    botonGuardar.textContent = "Actualizar egresado";
-
-
-    window.scrollTo({
-
-        top: 0,
-
-        behavior: "smooth"
-
-    });
-
-}
-
-
-function eliminarEgresado(indice) {
-
-    let egresados = JSON.parse(
-        localStorage.getItem("egresados")
-    );
-
-
-    if (egresados == null) {
-
-        return;
-
-    }
-
-
-    Swal.fire({
-
-        title: "¿Eliminar egresado?",
-
-        text: "Esta acción no se puede deshacer.",
-
-        icon: "warning",
-
-        showCancelButton: true,
-
-        confirmButtonText: "Eliminar",
-
-        cancelButtonText: "Cancelar"
-
-    }).then(function (resultado) {
-
-        if (resultado.isConfirmed) {
-
-            egresados.splice(indice, 1);
-
-
-            localStorage.setItem(
-
-                "egresados",
-
-                JSON.stringify(egresados)
-
-            );
-
-
-            if (indiceEgresadoEditando == indice) {
-
-                indiceEgresadoEditando = -1;
-
-                botonGuardar.textContent =
-                    "Registrar egresado";
-
-                limpiarFormulario();
-
-            }
-
-
-            Swal.fire({
-
-                title: "Egresado eliminado",
-
-                text: "El egresado fue eliminado correctamente.",
-
-                icon: "success",
-
-                confirmButtonText: "Aceptar"
-
-            });
-
-
-            mostrarEgresados();
-
-        }
-
-    });
-
-}
-
-
-formulario.addEventListener("submit", guardarEgresado);
 
 
 identificacion.addEventListener("input", function () {
@@ -983,6 +716,14 @@ fecha.addEventListener("change", function () {
 });
 
 
+
+formulario.addEventListener(
+    "submit",
+    registrarEgresado
+);
+
+
+
 cargarCarreras();
 
-mostrarEgresados();
+consultarEgresados();

@@ -1,3 +1,6 @@
+const URL_CARRERAS = "http://localhost:3000/carreras";
+
+
 const inputNombre = document.getElementById("nombre");
 
 const inputCodigo = document.getElementById("codigo");
@@ -9,20 +12,18 @@ const inputDuracion = document.getElementById("duracion");
 const inputDescripcion = document.getElementById("descripcion");
 
 
-const formularioCarrera = document.getElementById(
-    "formulario-carrera"
-);
+const formularioCarrera =
+    document.getElementById("formulario-carrera");
 
-const btnGuardarCarrera = document.getElementById(
-    "guardar-carrera"
-);
+const btnGuardarCarrera =
+    document.getElementById("guardar-carrera");
 
-const listaCarreras = document.getElementById(
-    "lista-carreras"
-);
+const listaCarreras =
+    document.getElementById("lista-carreras");
 
 
 let indiceCarreraEditando = -1;
+
 
 
 function validarNombre(nombre) {
@@ -57,6 +58,7 @@ function validarDuracion(duracion) {
     return Number(duracion) >= 1;
 
 }
+
 
 
 function resaltarCamposVacios() {
@@ -134,6 +136,7 @@ function resaltarCamposVacios() {
 }
 
 
+
 function validarFormulario() {
 
     const error = resaltarCamposVacios();
@@ -163,16 +166,34 @@ function validarFormulario() {
 }
 
 
+
+function obtenerCarrerasLocales() {
+
+    let carreras = JSON.parse(
+        localStorage.getItem("carreras")
+    );
+
+
+    if (carreras == null) {
+
+        carreras = [];
+
+    }
+
+
+    return carreras;
+
+}
+
+
+
 function codigoRepetido(codigo, carreras) {
 
     for (let i = 0; i < carreras.length; i++) {
 
         if (
-
             carreras[i].codigo == codigo &&
-
             i != indiceCarreraEditando
-
         ) {
 
             return true;
@@ -187,31 +208,60 @@ function codigoRepetido(codigo, carreras) {
 }
 
 
-function guardarCarrera(event) {
+
+function crearObjetoServidor() {
+
+    const carreraServidor = {
+
+        nombre: inputNombre.value.trim(),
+
+        descripcion: inputDescripcion.value.trim()
+
+    };
+
+
+    return carreraServidor;
+
+}
+
+
+
+function crearObjetoLocal() {
+
+    const carreraLocal = {
+
+        nombre: inputNombre.value.trim(),
+
+        codigo: inputCodigo.value.trim(),
+
+        escuela: inputEscuela.value,
+
+        duracion: inputDuracion.value,
+
+        descripcion: inputDescripcion.value.trim()
+
+    };
+
+
+    return carreraLocal;
+
+}
+
+
+
+async function guardarCarrera(event) {
 
     event.preventDefault();
 
 
-    const formularioValido = validarFormulario();
-
-
-    if (!formularioValido) {
+    if (!validarFormulario()) {
 
         return;
 
     }
 
 
-    let carreras = JSON.parse(
-        localStorage.getItem("carreras")
-    );
-
-
-    if (carreras == null) {
-
-        carreras = [];
-
-    }
+    let carreras = obtenerCarrerasLocales();
 
 
     const codigo = inputCodigo.value.trim();
@@ -234,47 +284,43 @@ function guardarCarrera(event) {
 
         });
 
+
         return;
 
     }
 
 
-    const carrera = {
-
-        nombre: inputNombre.value.trim(),
-
-        codigo: codigo,
-
-        escuela: inputEscuela.value,
-
-        duracion: inputDuracion.value,
-
-        descripcion: inputDescripcion.value.trim()
-
-    };
+    const carreraLocal =
+        crearObjetoLocal();
 
 
-    if (indiceCarreraEditando == -1) {
 
-        carreras.push(carrera);
+    if (indiceCarreraEditando != -1) {
+
+        carreras[indiceCarreraEditando] =
+            carreraLocal;
 
 
-        Swal.fire({
+        localStorage.setItem(
 
-            title: "Carrera registrada",
+            "carreras",
 
-            text: "La carrera fue guardada correctamente.",
+            JSON.stringify(carreras)
 
-            icon: "success",
+        );
 
-            confirmButtonText: "Aceptar"
 
-        });
+        indiceCarreraEditando = -1;
 
-    }
-    else {
 
-        carreras[indiceCarreraEditando] = carrera;
+        btnGuardarCarrera.textContent =
+            "Guardar Carrera";
+
+
+        formularioCarrera.reset();
+
+
+        eliminarErrores();
 
 
         Swal.fire({
@@ -290,53 +336,189 @@ function guardarCarrera(event) {
         });
 
 
-        indiceCarreraEditando = -1;
+        mostrarCarrerasLocales();
 
-        btnGuardarCarrera.textContent = "Guardar Carrera";
+
+        return;
 
     }
 
 
-    localStorage.setItem(
 
-        "carreras",
-
-        JSON.stringify(carreras)
-
-    );
+    const carreraServidor =
+        crearObjetoServidor();
 
 
-    formularioCarrera.reset();
+    try {
 
-    eliminarErrores();
+        const respuesta = await fetch(
+            URL_CARRERAS,
+            {
 
-    mostrarCarreras();
+                method: "POST",
+
+                headers: {
+
+                    "Content-Type": "application/json"
+
+                },
+
+                body: JSON.stringify(
+                    carreraServidor
+                )
+
+            }
+        );
+
+
+        const datosRespuesta =
+            await respuesta.json();
+
+
+        if (!respuesta.ok) {
+
+            let mensajeError =
+                "No se pudo registrar la carrera.";
+
+
+            if (datosRespuesta.mensajeError) {
+
+                mensajeError =
+                    datosRespuesta.mensajeError;
+
+            }
+
+
+            throw new Error(mensajeError);
+
+        }
+
+
+        carreras.push(carreraLocal);
+
+
+        localStorage.setItem(
+
+            "carreras",
+
+            JSON.stringify(carreras)
+
+        );
+
+
+        Swal.fire({
+
+            title: "Carrera registrada",
+
+            text: "La carrera fue enviada al servidor correctamente.",
+
+            icon: "success",
+
+            confirmButtonText: "Aceptar"
+
+        });
+
+
+        formularioCarrera.reset();
+
+
+        eliminarErrores();
+
+
+        mostrarCarrerasLocales();
+
+
+        await consultarCarrerasServidor();
+
+    }
+    catch (error) {
+
+        Swal.fire({
+
+            title: "Error",
+
+            text: error.message,
+
+            icon: "error",
+
+            confirmButtonText: "Aceptar"
+
+        });
+
+    }
 
 }
 
 
-function mostrarCarreras() {
 
-    let carreras = JSON.parse(
-        localStorage.getItem("carreras")
-    );
+async function consultarCarrerasServidor() {
+
+    try {
+
+        const respuesta = await fetch(
+            URL_CARRERAS
+        );
 
 
-    if (carreras == null) {
+        if (!respuesta.ok) {
 
-        carreras = [];
+            throw new Error(
+                "No se pudieron consultar las carreras."
+            );
+
+        }
+
+
+        const carrerasServidor =
+            await respuesta.json();
+
+
+        console.log(
+            "Carreras obtenidas del servidor:",
+            carrerasServidor
+        );
+
+    }
+    catch (error) {
+
+        Swal.fire({
+
+            title: "Error de conexión",
+
+            text: error.message,
+
+            icon: "error",
+
+            confirmButtonText: "Aceptar"
+
+        });
 
     }
 
+}
 
-    listaCarreras.innerHTML = "<h2>Carreras registradas</h2>";
+
+
+function mostrarCarrerasLocales() {
+
+    const carreras =
+        obtenerCarrerasLocales();
+
+
+    listaCarreras.innerHTML = `
+
+        <h2>Carreras registradas</h2>
+
+    `;
 
 
     if (carreras.length == 0) {
 
         listaCarreras.innerHTML += `
 
-            <p>No hay carreras registradas.</p>
+            <p>
+                No hay carreras registradas.
+            </p>
 
         `;
 
@@ -350,22 +532,26 @@ function mostrarCarreras() {
         const carrera = carreras[i];
 
 
-        let duracionTexto = "No especificada";
+        let duracionTexto =
+            "No especificada";
 
 
         if (carrera.duracion != "") {
 
-            duracionTexto = carrera.duracion + " años";
+            duracionTexto =
+                carrera.duracion + " años";
 
         }
 
 
-        let descripcionTexto = "Sin descripción";
+        let descripcionTexto =
+            "Sin descripción";
 
 
         if (carrera.descripcion != "") {
 
-            descripcionTexto = carrera.descripcion;
+            descripcionTexto =
+                carrera.descripcion;
 
         }
 
@@ -374,7 +560,9 @@ function mostrarCarreras() {
 
             <article class="card-carrera">
 
-                <h3>${carrera.nombre}</h3>
+                <h3>
+                    ${carrera.nombre}
+                </h3>
 
                 <p>
                     <strong>Código:</strong>
@@ -391,7 +579,9 @@ function mostrarCarreras() {
                     ${duracionTexto}
                 </p>
 
-                <p>${descripcionTexto}</p>
+                <p>
+                    ${descripcionTexto}
+                </p>
 
                 <div class="acciones">
 
@@ -424,38 +614,39 @@ function mostrarCarreras() {
 }
 
 
+
 function editarCarrera(indice) {
 
-    let carreras = JSON.parse(
-        localStorage.getItem("carreras")
-    );
+    const carreras =
+        obtenerCarrerasLocales();
 
 
-    if (carreras == null) {
-
-        return;
-
-    }
+    const carrera =
+        carreras[indice];
 
 
-    const carrera = carreras[indice];
+    inputNombre.value =
+        carrera.nombre;
+
+    inputCodigo.value =
+        carrera.codigo;
+
+    inputEscuela.value =
+        carrera.escuela;
+
+    inputDuracion.value =
+        carrera.duracion;
+
+    inputDescripcion.value =
+        carrera.descripcion;
 
 
-    inputNombre.value = carrera.nombre;
-
-    inputCodigo.value = carrera.codigo;
-
-    inputEscuela.value = carrera.escuela;
-
-    inputDuracion.value = carrera.duracion;
-
-    inputDescripcion.value = carrera.descripcion;
+    indiceCarreraEditando =
+        indice;
 
 
-    indiceCarreraEditando = indice;
-
-
-    btnGuardarCarrera.textContent = "Actualizar Carrera";
+    btnGuardarCarrera.textContent =
+        "Actualizar Carrera";
 
 
     window.scrollTo({
@@ -469,18 +660,11 @@ function editarCarrera(indice) {
 }
 
 
+
 function eliminarCarrera(indice) {
 
-    let carreras = JSON.parse(
-        localStorage.getItem("carreras")
-    );
-
-
-    if (carreras == null) {
-
-        return;
-
-    }
+    let carreras =
+        obtenerCarrerasLocales();
 
 
     Swal.fire({
@@ -501,7 +685,10 @@ function eliminarCarrera(indice) {
 
         if (resultado.isConfirmed) {
 
-            carreras.splice(indice, 1);
+            carreras.splice(
+                indice,
+                1
+            );
 
 
             localStorage.setItem(
@@ -517,7 +704,9 @@ function eliminarCarrera(indice) {
 
                 indiceCarreraEditando = -1;
 
+
                 formularioCarrera.reset();
+
 
                 btnGuardarCarrera.textContent =
                     "Guardar Carrera";
@@ -538,7 +727,7 @@ function eliminarCarrera(indice) {
             });
 
 
-            mostrarCarreras();
+            mostrarCarrerasLocales();
 
         }
 
@@ -547,17 +736,27 @@ function eliminarCarrera(indice) {
 }
 
 
+
 function eliminarErrores() {
 
-    inputNombre.classList.remove("input-error");
+    inputNombre.classList.remove(
+        "input-error"
+    );
 
-    inputCodigo.classList.remove("input-error");
+    inputCodigo.classList.remove(
+        "input-error"
+    );
 
-    inputEscuela.classList.remove("input-error");
+    inputEscuela.classList.remove(
+        "input-error"
+    );
 
-    inputDuracion.classList.remove("input-error");
+    inputDuracion.classList.remove(
+        "input-error"
+    );
 
 }
+
 
 
 formularioCarrera.addEventListener(
@@ -569,34 +768,63 @@ formularioCarrera.addEventListener(
 );
 
 
-inputNombre.addEventListener("input", function () {
 
-    inputNombre.classList.remove("input-error");
+inputNombre.addEventListener(
+    "input",
+    function () {
 
-});
+        inputNombre.classList.remove(
+            "input-error"
+        );
 
-
-inputCodigo.addEventListener("input", function () {
-
-    inputCodigo.value = inputCodigo.value.toUpperCase();
-
-    inputCodigo.classList.remove("input-error");
-
-});
+    }
+);
 
 
-inputEscuela.addEventListener("change", function () {
 
-    inputEscuela.classList.remove("input-error");
+inputCodigo.addEventListener(
+    "input",
+    function () {
 
-});
-
-
-inputDuracion.addEventListener("input", function () {
-
-    inputDuracion.classList.remove("input-error");
-
-});
+        inputCodigo.value =
+            inputCodigo.value.toUpperCase();
 
 
-mostrarCarreras();
+        inputCodigo.classList.remove(
+            "input-error"
+        );
+
+    }
+);
+
+
+
+inputEscuela.addEventListener(
+    "change",
+    function () {
+
+        inputEscuela.classList.remove(
+            "input-error"
+        );
+
+    }
+);
+
+
+
+inputDuracion.addEventListener(
+    "input",
+    function () {
+
+        inputDuracion.classList.remove(
+            "input-error"
+        );
+
+    }
+);
+
+
+
+mostrarCarrerasLocales();
+
+consultarCarrerasServidor();
